@@ -24,4 +24,8 @@ def affiche(g):
         for j in i:
             print(j,sep=' ',end=' ')
         print()
+    if premiertour==0:
+        debutdeplacement()
+
+
     
