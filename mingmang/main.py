@@ -1,5 +1,5 @@
 from affiche import *
-from deplacement import *
+#from deplacement import *
 from gui import *
 from random import randint
 
@@ -19,18 +19,41 @@ def init():
         taille=input("taille ?")
 
     creegrille(taille)
+    choixadversaire()
 
-def debutdeplacement():
-    premierjoueur=0
-    choixpremierjoueur=0
-    choixpremierjoueur=input("Quel joueur commence : Blanc , Noir , Aléatoire  [B/N/A]")
+def choixadversaire():
+    adversaire=0
+    adversaire=input("Contre qui souhaitez vous jouer : IA , 2éme joueur humain , 2éme joueur humain en réseau [1,2,3]")
+    if adversaire==1:
+        niveauIA=input("Choisissez votre adversaire IA : Jean-Kevin(Facile) , Satan(Difficile) [1/2]")
+    definejoueurs(adversaire,niveauIA)
+    
+def definejoueurs(adversaire):
+    #doit dire qui prendra les pions blanc
+    #les pions blanc commence toujours
+    #1=joueur local   2= 2éme joueur local ou IA
+    adversaire=int(adversaire)
+    choixpremierjoueur=input("Quelle couleur choisissez-vous ? Blanc , Noir , Aléatoire [B/N/A]")
     if choixpremierjoueur=="A":
         premierjoueur=randint(1,2)
-    elif choixpremierjoueur=="N":
+    if choixpremierjoueur=="B":
         premierjoueur=1
-    elif choixpremierjoueur=="B":
+    if choixpremierjoueur=="N":
         premierjoueur=2
-    deplacement(premierjoueur)
+    if adversaire==1 :
+        if premierjoueur==1:
+            print("Vous jouerez les Blancs et commencerez en premier , l'IA jouera les Noirs")
+        elif premierjoueur==2:
+            print("L'IA jouera les Blancs et commencera en premiére , vous jouerez les Noirs")
+    else:
+        if premierjoueur==1:
+            print("Vous jouerez les Blancs et commencerez en premier , le second joueur jouera les Noirs")
+        elif premierjoueur==2:
+            print("Le second joueurs jouera les Blancs et commencera en premier , vous jouerez les Noirs")
+    if 
+
+                   
+    
 
     
         

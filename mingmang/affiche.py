@@ -16,7 +16,6 @@ def creegrille(taille):
         g[x][taille-1]="1"
     affiche(g)
     
-    
 
 
 def affiche(g):
@@ -24,8 +23,6 @@ def affiche(g):
         for j in i:
             print(j,sep=' ',end=' ')
         print()
-    if premiertour==0:
-        debutdeplacement()
 
 
     
