@@ -8,7 +8,7 @@ def init():
        taille du plateau est ensuite envoyé a la fonction creegrille dans
        le module affiche et genere le plateu dans la console """
     taille=0
-    choixtaille=input("choisissez la taille du plateau : petit , classique ou grand [P/C/G]")
+    choixtaille=input("choisissez la taille du plateau : petit(9x9) , classique(19x19) ou grand(29x29) [P/C/G]")
     if choixtaille=="P":
         taille=9
     elif choixtaille=="C":
@@ -28,10 +28,11 @@ def choixadversaire():
         niveauIA=input("Choisissez votre adversaire IA : Jean-Kevin(Facile) , Satan(Difficile) [1/2]")
     definejoueurs(adversaire,niveauIA)
     
-def definejoueurs(adversaire):
+def definejoueurs(adversaire,niveauIA):
     #doit dire qui prendra les pions blanc
     #les pions blanc commence toujours
     #1=joueur local   2= 2éme joueur local ou IA
+    #premier : 1=IA 2=deux joueurs local 3=deux joueurs en réseau
     adversaire=int(adversaire)
     choixpremierjoueur=input("Quelle couleur choisissez-vous ? Blanc , Noir , Aléatoire [B/N/A]")
     if choixpremierjoueur=="A":
@@ -50,8 +51,9 @@ def definejoueurs(adversaire):
             print("Vous jouerez les Blancs et commencerez en premier , le second joueur jouera les Noirs")
         elif premierjoueur==2:
             print("Le second joueurs jouera les Blancs et commencera en premier , vous jouerez les Noirs")
-    if 
+    
 
+    
                    
     
 
