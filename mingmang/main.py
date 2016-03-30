@@ -26,21 +26,32 @@ def init():
     choixadversaire()
 
 def choixadversaire():
+    #premier joueur n'es pas éxecutée si adversaire =2
     adversaire=0
-    adversaire=input("Contre qui souhaitez vous jouer : IA , 2éme joueur humain , 2éme joueur humain en réseau [1,2,3]")
-    if adversaire==1:
-        global niveauIA=input("Choisissez votre adversaire IA : Jean-Kevin(Facile) , Satan(Difficile) [1/2]")
-    if adversaire==2:
-        tourjoueurlocal():
+    adversaire=input("choisissez votre adversaire: IA , 2éme joueur humain , 2éme joueur humain en réseau [1,2,3]")
+    if adversaire=="1":
+        niveauia=input("Choisissez le niveau de l'IA : Facile , Difficile [1/2]")
+    if adversaire=="2":
+        jcj1()
     else:
-        definecouleur(adversaire)
+        premierjoueur(adversaire,niveauia)
     
-def definecouleur(adversaire,niveauIA):
-    #doit dire qui prendra les pions blanc
-    #les pions blanc commence toujours
-    #1=joueur local   2= 2éme joueur local ou IA
-    #premier : 1=IA 2=deux joueurs local 3=deux joueurs en réseau
-    
+def premierjoueur(adversaire):
+    #  1=joueur local  2=IA ou jouer en réseau
+    pj=randint(1,2)
+    if pj==1:
+        if adversaire=="3":
+            print("Vous commencez a jouer avec les pions blancs! L'adversaire jouera les pions noirs")
+            jcjr1()
+        else:
+            print("Vous commencez a jouer avec les pions blancs! L'IA jouera les pions noirs")
+            jcia()
+    else:
+        if adversaire=="1":
+            print("Votre adversaire commence a jouer avec les pions noirs ! Vous jouerez les pions blancs")
+            
+        else:
+            print("L'IA commence a jouer avec les pions blancs! Vous jouerez les pions noirs")
     
     
 
