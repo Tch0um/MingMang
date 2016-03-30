@@ -3,6 +3,10 @@ from affiche import *
 from gui import *
 from random import randint
 
+
+#A FAIRE: changer init pour une fonction de type menu ou
+#le joueur choisiras entre commencer une nouvelle partie ou charger
+#interface avec les régles
 def init():
     """interface console , l'utilisateur choisit la taille de son plateau, la
        taille du plateau est ensuite envoyé a la fonction creegrille dans
@@ -25,32 +29,19 @@ def choixadversaire():
     adversaire=0
     adversaire=input("Contre qui souhaitez vous jouer : IA , 2éme joueur humain , 2éme joueur humain en réseau [1,2,3]")
     if adversaire==1:
-        niveauIA=input("Choisissez votre adversaire IA : Jean-Kevin(Facile) , Satan(Difficile) [1/2]")
-    definejoueurs(adversaire,niveauIA)
+        global niveauIA=input("Choisissez votre adversaire IA : Jean-Kevin(Facile) , Satan(Difficile) [1/2]")
+    if adversaire==2:
+        tourjoueurlocal():
+    else:
+        definecouleur(adversaire)
     
-def definejoueurs(adversaire,niveauIA):
+def definecouleur(adversaire,niveauIA):
     #doit dire qui prendra les pions blanc
     #les pions blanc commence toujours
     #1=joueur local   2= 2éme joueur local ou IA
     #premier : 1=IA 2=deux joueurs local 3=deux joueurs en réseau
-    adversaire=int(adversaire)
-    choixpremierjoueur=input("Quelle couleur choisissez-vous ? Blanc , Noir , Aléatoire [B/N/A]")
-    if choixpremierjoueur=="A":
-        premierjoueur=randint(1,2)
-    if choixpremierjoueur=="B":
-        premierjoueur=1
-    if choixpremierjoueur=="N":
-        premierjoueur=2
-    if adversaire==1 :
-        if premierjoueur==1:
-            print("Vous jouerez les Blancs et commencerez en premier , l'IA jouera les Noirs")
-        elif premierjoueur==2:
-            print("L'IA jouera les Blancs et commencera en premiére , vous jouerez les Noirs")
-    else:
-        if premierjoueur==1:
-            print("Vous jouerez les Blancs et commencerez en premier , le second joueur jouera les Noirs")
-        elif premierjoueur==2:
-            print("Le second joueurs jouera les Blancs et commencera en premier , vous jouerez les Noirs")
+    
+    
     
 
     
