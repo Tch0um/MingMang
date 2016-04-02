@@ -1,5 +1,7 @@
 from main import *
 
+
+
 """fonctions de créactions et d'affichage de la grille dans la console"""
 def creegrille(taille):
     g=[0]*taille
@@ -19,10 +21,13 @@ def creegrille(taille):
 
 
 def affiche(g):
+    res=""
     for i in g:
         for j in i:
-            print(j,sep=' ',end=' ')
-        print()
+            res+=str(j)+" "
+        res+="\n"
+    print (res)
+        
 
 
     

@@ -1,19 +1,31 @@
 from main import *
+from gui import *
 
+#pj=0-> joueur 1 propriétaire        pj=1-> joueur 2 invité (ou ia)
 ################################ VERIFICATIONS VICTOIRE ###############################
+def verifpions(g):
+    noirs=0
+    blancs=0
+    for i in g:
+        for j in i:
+            if j==1:
+                blanc+=1
+            if j==2:
+                noirs+=1
+    if blancs==0:
+        print("victoire des noirs")
+    elif noirs==0:
+        print("victoire des blancs")
+    else:
+        verifarea()
 
+def verifarea(g)
+    
+                
 ############################ JOUEUR CONTRE JOUEUR EN LOCAL ############################
-def jcj1():
-    print("partie contre joueur en local")
-    
-    
-    
-    
+def jcj(tour):
     
 
-
-def jcj2():
-    print("kek")
 
 
 
@@ -27,11 +39,8 @@ def jcj2():
 
 ############################ JOUEUR CONTRE IA FACILE############################
 
-def jciafacile1():
-    print("partie contre ia facile , vous commencez")
+def jciafacile():
 
-def jciafacile2():
-    print("partie contre ia facile , ia commence")
 
 
 
@@ -39,23 +48,13 @@ def jciafacile2():
 ############################ JOUEUR CONTRE IA DIFFICILE############################
 
 
-def jciadifficile1():
-    print("partie contre ia difficile , vous commencez")
-    
-def jciadifficile2():
-    print("partie contre ia difficile , ia commence")
+def jciadifficile():
+
 
 ############################ JOUEUR CONTRE JOUEUR EN RESEAU ############################
 
 
-def jcjr1():
-    print("partie contre joueur en réseau , vous comencez")
-
-
-
-def jcjr2():
-    print("partie contre joueur en réseau , le second joueur comence")
-
+def jcjr():
 
 
 
