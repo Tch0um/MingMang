@@ -1,28 +1,16 @@
-#from deplacement import *
+from deplacement import *
 from gui import *
 from random import randint
-#from deplacement import *
 
 
-#A FAIRE: changer init pour une fonction de type menu ou
-#le joueur choisiras entre commencer une nouvelle partie ou charger
-#interface avec les régles
-#######FOUT MOI TOUT CA DANS INTERFACE#######
+
 def init():
     choixtaille()
+
+
     
 
-def debutjeu(mode,tour):
-    #mode  1=jcj  2=iafacile  3=iadifficile  4=jcjréseau
-    print("jeux initialisé")
-    if mode==1:
-        jcj(tour)
-    elif mode==2:
-        jciafacile(tour)
-    elif mode==3:
-        jciadifficile(tour)
-    elif mode==4:
-        jcjr(tour)
+
     
 
 

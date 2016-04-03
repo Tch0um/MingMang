@@ -1,7 +1,8 @@
 from main import *
 from gui import *
-
-#pj=0-> joueur 1 propriétaire        pj=1-> joueur 2 invité (ou ia)
+#0=vide 1=blanc 2=noir
+#LES NOIRS COMMENCENT TOUJOURS
+#tour=0-> joueur 1 propriétaire        tour=1-> joueur 2 invité (ou ia)
 ################################ VERIFICATIONS VICTOIRE ###############################
 def verifpions(g):
     noirs=0
@@ -18,12 +19,25 @@ def verifpions(g):
         print("victoire des blancs")
     else:
         verifarea()
+        
+#def verifarea(g)     
+#def verifdeplacement(coord1,coord2):
 
-def verifarea(g)
-    
+
+
                 
 ############################ JOUEUR CONTRE JOUEUR EN LOCAL ############################
+
+
+
 def jcj(tour):
+    print("debutpartie jcj")
+    
+    
+    
+    
+    
+    
     
 
 
@@ -39,7 +53,8 @@ def jcj(tour):
 
 ############################ JOUEUR CONTRE IA FACILE############################
 
-def jciafacile():
+def jciafacile(tour):
+    print("jeuia facile")
 
 
 
@@ -48,13 +63,15 @@ def jciafacile():
 ############################ JOUEUR CONTRE IA DIFFICILE############################
 
 
-def jciadifficile():
+def jciadifficile(tour):
+    print("jeuiadifficile")
 
 
 ############################ JOUEUR CONTRE JOUEUR EN RESEAU ############################
 
 
-def jcjr():
+def jcjr(tour):
+    print("jcj en réseau")
 
 
 

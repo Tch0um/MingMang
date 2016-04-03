@@ -1,6 +1,7 @@
 from main import *
 from random import randint
 from affiche import *
+import deplacement
 
 def choixtaille():
     taille=0
@@ -20,7 +21,6 @@ def choixadversaire():
     #premier joueur n'es pas éxecutée si adversaire =2
     #mode :   jcj=1   jciafacile=2    jciadifficile=3     jcjr=4
     adversaire=0
-    pj=0
     adversaire=int(input("choisissez votre adversaire: IA , 2éme joueur humain , 2éme joueur humain en réseau [1,2,3]"))
     if adversaire==1:
         niveauia=int(input("Choisissez le niveau de l'IA : Facile , Difficile [1/2]"))
@@ -60,3 +60,18 @@ def premierjoueur(adversaire,niveauia):
             elif niveauia==2:
                 mode=3
                 debutjeu(mode,tour)
+
+
+def debutjeu(mode,tour):
+    if mode==1:
+        deplacement.jcj(tour)
+    elif mode==2:
+        deplacement.jciafacile(tour)
+    elif mode==3:
+        deplacement.jciadifficile(tour)
+    elif mode==4:
+        deplacement.jcjr(tour)
+
+def entreecoord():
+
+
