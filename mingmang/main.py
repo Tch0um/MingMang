@@ -2,7 +2,7 @@ import deplacement
 from gui import *
 from random import randint
 from affiche import *
-import affiche
+import affiche 
 
 def init():
     choixtaille()

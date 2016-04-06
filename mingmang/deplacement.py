@@ -38,19 +38,19 @@ def verifdeplacement(coord1,coord2,tour):
         print("vous ne pouvez pas déplacer votre pion sur un autre pion")
         return False
     if coord1[0]<coord2[0]:
-        for i in range (int(coord2[0])-int(coord1[0])):#1
+        for i in range ((coord2[0])-(coord1[0])):#1
             if (affiche.g[coord1[0]+i][coord2[0]])!=0:
                 return False
     elif coord1[0]>coord2[0]:
-        for i in range (int(coord1[0])-int(coord2[0])):#2
+        for i in range ((coord1[0])-(coord2[0])):#2
              if (affiche.g[coord1[0]+i][coord2[0]])!=0:
                 return False
     if coord1[1]<coord2[1]:
-        for i in range (int(coord2[1])-int(coord1[1])):#3
+        for i in range ((coord2[1])-(coord1[1])):#3
             if (affiche.g[coord1[0]][coord2[0]+i])!=0:
                 return False
     elif coord1[1]>coord2[1]:
-        for i in range (int(coord1[1])-int(coord2[1])):#4
+        for i in range ((coord1[1])-(coord2[1])):#4
             if (affiche.g[coord1[0]][coord2[0]+i])!=0:
                 return False
     return True
@@ -90,26 +90,6 @@ def jcj(tour):
         
         
         
-    
-    
-        
-    
-    
-              
-    #print("entrez les coordonnées de la case cible") 
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
-
 
 
 
