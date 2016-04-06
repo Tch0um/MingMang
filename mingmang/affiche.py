@@ -1,9 +1,9 @@
 from main import *
-
-
+from deplacement import *
 
 """fonctions de créactions et d'affichage de la grille dans la console"""
 def creegrille(taille):
+    global g
     g=[0]*taille
     for i in range(taille):
         g[i]=[0]*taille
