@@ -16,11 +16,11 @@ def creegrille(taille):
         g[(taille)-1][x]="1"
     for x in range(taille):
         g[x][taille-1]="2"
-    affiche(g)
+    affiche()
     
 
 
-def affiche(g):
+def affiche():
     res=""
     for i in g:
         for j in i:

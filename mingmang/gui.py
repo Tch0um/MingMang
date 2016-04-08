@@ -24,7 +24,7 @@ def choixadversaire():
     adversaire=int(input("choisissez votre adversaire: IA , 2éme joueur humain , 2éme joueur humain en réseau [1,2,3]"))
     if adversaire==1:
         niveauia=int(input("Choisissez le niveau de l'IA : Facile , Difficile [1/2]"))
-    if adversaire==2:
+    elif adversaire==2:
         tour=1
         mode=1
         main.debutjeu(mode,tour)

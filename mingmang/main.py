@@ -2,7 +2,6 @@ import deplacement
 from gui import *
 from random import randint
 from affiche import *
-import affiche 
 
 def init():
     choixtaille()
@@ -18,11 +17,15 @@ def debutjeu(mode,tour):
     elif mode==4:
         deplacement.jcjr(tour)
 
-def toursuivant(tour):
+def toursuivant(mode,tour):
+    print("changement du tour")
     if tour==1:
         tour=2
-    if tour==2:
+    elif tour==2:
         tour=1
-    affiche.affiche(g)
+    affiche()
+    debutjeu(mode,tour)
+    
+    
     
 

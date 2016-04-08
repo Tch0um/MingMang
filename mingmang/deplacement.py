@@ -2,6 +2,9 @@ from main import *
 from gui import *
 from affiche import *
 import affiche
+
+
+
 #0=vide 1=blanc 2=noir
 #LES NOIRS COMMENCENT TOUJOURS
 #tour=0-> joueur 1 propriétaire        tour=1-> joueur 2 invité (ou ia)
@@ -27,7 +30,8 @@ def verifdeplacement(coord1,coord2,tour):
     coord1[0]= int(coord1[0])
     coord1[1]= int(coord1[1])
     coord2[0]= int(coord2[0])
-    coord2[1]= int(coord2[0])
+    coord2[1]= int(coord2[1])
+    
     if int(coord1[0])-int(coord2[0])!=0 and int(coord1[1])-int(coord2[1])!=0 :
         print("déplacement invalide : vous ne pouvez bouger qu'en ligne ou colonne")
         return False
@@ -37,7 +41,7 @@ def verifdeplacement(coord1,coord2,tour):
     if affiche.g[int(coord2[0])][int(coord2[1])]!=0:
         print("vous ne pouvez pas déplacer votre pion sur un autre pion")
         return False
-    if coord1[0]<coord2[0]:
+    """if coord1[0]<coord2[0]:
         for i in range ((coord2[0])-(coord1[0])):#1
             if (affiche.g[coord1[0]+i][coord2[0]])!=0:
                 return False
@@ -52,7 +56,7 @@ def verifdeplacement(coord1,coord2,tour):
     elif coord1[1]>coord2[1]:
         for i in range ((coord1[1])-(coord2[1])):#4
             if (affiche.g[coord1[0]][coord2[0]+i])!=0:
-                return False
+                return False"""
     return True
 
         
@@ -71,13 +75,16 @@ def verifdeplacement(coord1,coord2,tour):
 
 
 def jcj(tour):
+    mode=1
+    print("au tou du joueur",tour)
     print("entrez les coordonées du pion a déplacer x y ex : 1 12")
     coord1=entreecoord()
     for i in range (len(coord1)-1):
         if coord1[i]==" ":
             del coord1[i]
-    #if int(affiche.g[int(coord1[0])][int(coord1[1])]) == tour:
-    #   print("le pion selectioné est correct , pion selectioné=",int(affiche.g[int(coord1[0])][int(coord1[1])]),"=tour=",tour)
+    if int(affiche.g[int(coord1[0])][int(coord1[1])]) != tour:
+        print("vous ne pouvez pas bouger le pion de votre adversaire !")
+        jcj(tour)
     print("entrez les coordonées de la case ou déplacer le pion")
     coord2=entreecoord()
     for i in range (len(coord2)-1):
@@ -86,7 +93,9 @@ def jcj(tour):
     if verifdeplacement(coord1,coord2,tour)==True:
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
-    toursuivant(tour)
+        print("ca marche , cases déplacées")
+        testcapture(coord2)
+    toursuivant(mode,tour)
         
         
         
