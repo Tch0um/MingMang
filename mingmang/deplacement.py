@@ -9,10 +9,10 @@ import affiche
 #LES NOIRS COMMENCENT TOUJOURS
 #tour=0-> joueur 1 propriétaire        tour=1-> joueur 2 invité (ou ia)
 ################################ VERIFICATIONS VICTOIRE ###############################
-def verifvictoirepions(g):
+def verifvictoirepions():
     noirs=0
     blancs=0
-    for i in g:
+    for i in affiche.g:
         for j in i:
             if j==1:
                 blanc+=1
@@ -26,44 +26,16 @@ def verifvictoirepions(g):
         verifarea()
         
 #def verifarea(g)     
-def verifdeplacement(coord1,coord2,tour):
-    coord1[0]= int(coord1[0])
-    coord1[1]= int(coord1[1])
-    coord2[0]= int(coord2[0])
-    coord2[1]= int(coord2[1])
-    
-    if int(coord1[0])-int(coord2[0])!=0 and int(coord1[1])-int(coord2[1])!=0 :
-        print("déplacement invalide : vous ne pouvez bouger qu'en ligne ou colonne")
-        return False
-    if coord1==coord2:
-        #déplacement sur la même case
-        return False
-    if affiche.g[int(coord2[0])][int(coord2[1])]!=0:
-        print("vous ne pouvez pas déplacer votre pion sur un autre pion")
-        return False
-    """if coord1[0]<coord2[0]:
-        for i in range ((coord2[0])-(coord1[0])):#1
-            if (affiche.g[coord1[0]+i][coord2[0]])!=0:
-                return False
-    elif coord1[0]>coord2[0]:
-        for i in range ((coord1[0])-(coord2[0])):#2
-             if (affiche.g[coord1[0]+i][coord2[0]])!=0:
-                return False
-    if coord1[1]<coord2[1]:
-        for i in range ((coord2[1])-(coord1[1])):#3
-            if (affiche.g[coord1[0]][coord2[0]+i])!=0:
-                return False
-    elif coord1[1]>coord2[1]:
-        for i in range ((coord1[1])-(coord2[1])):#4
-            if (affiche.g[coord1[0]][coord2[0]+i])!=0:
-                return False"""
-    return True
+
+           
+
+
 
         
 #doit verifier que le déplacement se fait en ligne ou en colonne et aps les deux en meme temps
 #doit verifier si on ne traverse pas uen autre piece,
 #occupée par un autre pion , deplacement sur la meme case
-#
+
 
 
 
@@ -76,27 +48,50 @@ def verifdeplacement(coord1,coord2,tour):
 
 def jcj(tour):
     mode=1
-    print("au tou du joueur",tour)
-    print("entrez les coordonées du pion a déplacer x y ex : 1 12")
+    print("au tour du joueur 1")
     coord1=entreecoord()
+    print(coord1)
+    print("y=",coord1[0])
+    print("x=",coord1[1])
+    if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
+        print("selection invalide , vous devez choisir un de vos pions")
+        jcj(tour)
+    coord2=entreecoord()
+    if verifdeplacement(coord1,coord2,tour)==True:
+        (affiche.g[coord1[0]][coord1[1]])=0
+        (affiche.g[coord2[0]][coord2[1]])=int (tour)
+        toursuivant
+
+
+
+    
+    """coord1=(0,0)
+    coord2=(0,0)
+    mode=1
+    print("au tour du joueur",tour)
+    print("entrez la coordonée y du pion a déplacer")
+    coord1[0]=entreecoord()
     for i in range (len(coord1)-1):
         if coord1[i]==" ":
             del coord1[i]
-    if int(affiche.g[int(coord1[0])][int(coord1[1])]) != tour:
-        print("vous ne pouvez pas bouger le pion de votre adversaire !")
+    if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
+        print("selection invalide , vous devez choisir un de vos pions")
         jcj(tour)
     print("entrez les coordonées de la case ou déplacer le pion")
     coord2=entreecoord()
-    for i in range (len(coord2)-1):
-        if coord2[i]==" ":
-            del coord2[i]
+    #for i in range (len(coord2)-1):
+        #if coord2[i]==" ":
+            #del coord2[i]
     if verifdeplacement(coord1,coord2,tour)==True:
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         print("ca marche , cases déplacées")
-        testcapture(coord2)
-    toursuivant(mode,tour)
-        
+        #testcapture(coord2)
+        #verifvictoirepions()
+        toursuivant(mode,tour)
+    else:
+        print ("déplacement invalide")
+        jcj(tour)"""
         
         
 
@@ -138,6 +133,98 @@ def jcjr(tour):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""def verifdeplacement(coord1,coord2,tour):
+    coord1[0]= int(coord1[0])
+    coord1[1]= int(coord1[1])
+    coord2[0]= int(coord2[0])
+    coord2[1]= int(coord2[1])
+    
+    if int(coord1[0])-int(coord2[0])!=0 and int(coord1[1])-int(coord2[1])!=0 :
+        print("déplacement invalide : vous ne pouvez bouger qu'en ligne ou colonne")
+        return False
+    
+    if coord1==coord2:
+        #déplacement sur la même case
+        return False
+    
+    if affiche.g[int(coord2[0])][int(coord2[1])]!=0:
+        print("vous ne pouvez pas déplacer votre pion sur un autre pion")
+        return False
+
+    if abs(((coord1[0])-(coord2[0]))) >1 or abs(((coord1[1])-(coord2[1]))) >1:
+        if ((coord1[0])-(coord2[0])) !=0:
+            print ("déplacement en colonne")
+            if (coord1[0])>(coord2[0]):#déplacement vers le haut ,on compte donc de coord2->coord1
+                for i in range (1,(coord1[0])-(coord2[0])):
+                    if affiche.g[coord2[0]+i][coord2[1]] !=0:
+                        return False
+                    else:
+                        return True
+            if (coord2[0])>(coord1[0]):#déplacement vers le bas , on compte donc de coord1->coord2
+                for i in range (1,(coord2[0])-(coord1[0])):
+                    if affiche.g[coord1[0]][coord1[1]+i] !=0:
+                        return False
+                    else:
+                        return True
+        if ((coord1[1])-(coord2[1])) !=0:
+            print ("déplacement en ligne")
+            if (coord1[1])>(coord2[1]):#déplacement vers la gauche ,on compte donc de coord2->coord1
+                for i in range (1,(coord1[1])-(coord2[1])):
+                    if affiche.g[coord2[0]][coord2[1]+i] !=0:
+                        return False
+                    else :
+                        return True
+            if (coord2[1])>(coord1[1]):#déplacement vers la droite , on compte donc de coord1->coord2
+                for i in range (1,(coord2[1])-(coord1[1])):
+                    if affiche.g[coord1[0]+i][coord1[1]] !=0:
+                        return False
+                    else :
+                        return True
+    else:
+            return True"""
 
 
 

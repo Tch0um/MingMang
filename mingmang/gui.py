@@ -63,7 +63,9 @@ def premierjoueur(adversaire,niveauia):
 
 
 def entreecoord():
-    return list (input())
+    y=int(input("entrez l'axe y du pion que vous souhaitez déplacer"))
+    x=int(input("entrez l'axe x du pion que vous souhaitez déplacer"))
+    return (y,x)
     
 
 
