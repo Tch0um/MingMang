@@ -24,10 +24,66 @@ def verifvictoirepions():
         print("victoire des blancs")
     else:
         verifarea()
-        
-#def verifarea(g)     
 
-           
+def verifdeplacement(coord1,coord2,tour):
+    if int(coord1[0])-int(coord2[0])!=0 and int(coord1[1])-int(coord2[1])!=0 :
+        print("déplacement invalide : vous ne pouvez bouger qu'en ligne ou colonne")
+        return False
+    
+    if affiche.g[(coord2[0])][(coord2[1])]!=0:
+        print("vous ne pouvez pas déplacer votre pion sur un autre pion")
+        return False
+
+    if abs(((coord1[0])-(coord2[0]))) >1 or abs(((coord1[1])-(coord2[1]))) >1:
+        if ((coord1[0])-(coord2[0])) !=0:
+            print ("déplacement en colonne")
+            if (coord1[0])>(coord2[0]):#déplacement vers le haut ,on compte donc de coord2->coord1
+                for i in range (1,(coord1[0])-(coord2[0])):
+                    print("deplacement vers le haut")
+                    print("case",i,"=",affiche.g[coord1[0]][coord1[1]+i])
+                    if affiche.g[coord2[0]+i][coord2[1]] !=0:
+                        return False
+                    else:
+                        return True
+            if (coord2[0])>(coord1[0]):#déplacement vers le bas , on compte donc de coord1->coord2
+                for i in range (((coord2[0])-(coord1[0]))-1):
+                    print("deplacement vers le bas")
+                    print("case",i,"=",affiche.g[coord1[0]][coord1[1]+i])
+                    if affiche.g[coord1[0]][coord1[1]+i] !=0:
+                        return False
+                    else:
+                        return True
+        if ((coord1[1])-(coord2[1])) !=0:
+            print ("déplacement en ligne")
+            if (coord1[1])>(coord2[1]):#déplacement vers la gauche ,on compte donc de coord2->coord1
+                for i in range (1,(coord1[1])-(coord2[1])):
+                    print("deplacement vers la gauche")
+                    print("case",i,"=",affiche.g[coord1[0]][coord1[1]+i])
+                    if affiche.g[coord2[0]][coord2[1]+i] !=0:
+                        return False
+                    else :
+                        return True
+            if (coord2[1])>(coord1[1]):#déplacement vers la droite , on compte donc de coord1->coord2
+                for i in range (((coord2[1])-(coord1[1]))-1):
+                    print("deplacment vers la droite")
+                    print("case",i,"=",affiche.g[coord1[0]][coord1[1]+i])
+                    if affiche.g[coord1[0]+i][coord1[1]] !=0:
+                        return False
+                    else :
+                        return True
+
+
+
+
+
+
+    else:
+        return True
+    
+    
+    
+
+        
 
 
 
@@ -47,20 +103,34 @@ def verifvictoirepions():
 
 
 def jcj(tour):
+    coord1=[0,0]
+    coord2=[0,0]
     mode=1
-    print("au tour du joueur 1")
-    coord1=entreecoord()
+    print("au tour du joueur ",tour)
+    print("Choisissez un pion a déplacer")
+    coord1[0]=entreecoord1()
+    coord1[1]=entreecoord2()
     print(coord1)
-    print("y=",coord1[0])
-    print("x=",coord1[1])
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
         print("selection invalide , vous devez choisir un de vos pions")
         jcj(tour)
-    coord2=entreecoord()
-    if verifdeplacement(coord1,coord2,tour)==True:
+    print("choisissez ou déplacer votre pion")
+    coord2[0]=entreecoord1()
+    coord2[1]=entreecoord2()
+    print(coord2)
+    if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
+        print("le joueur",tour,"passe son tour")
+        #passetour(mode,tour)
+    if verifdeplacement(coord1,coord2,tour):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
-        toursuivant
+        toursuivant(mode,tour)
+        #capture(coord2)
+        #victoirezone()
+        #victoirepions()
+    else:
+        print("déplacement invalide")
+        jcj(tour)
 
 
 
@@ -121,37 +191,6 @@ def jciadifficile(tour):
 
 def jcjr(tour):
     print("jcj en réseau")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

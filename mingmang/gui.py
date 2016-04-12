@@ -62,10 +62,13 @@ def premierjoueur(adversaire,niveauia):
                 main.debutjeu(mode,tour)
 
 
-def entreecoord():
-    y=int(input("entrez l'axe y du pion que vous souhaitez déplacer"))
-    x=int(input("entrez l'axe x du pion que vous souhaitez déplacer"))
-    return (y,x)
+def entreecoord1():
+    return int((input("ligne ?")))
+            
+def entreecoord2():
+    return int((input("colonne?")))
+    
+    
     
 
 
