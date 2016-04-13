@@ -33,66 +33,62 @@ def verifdeplacement(coord1,coord2,tour):
     if affiche.g[(coord2[0])][(coord2[1])]!=0:
         print("vous ne pouvez pas déplacer votre pion sur un autre pion")
         return False
+    
+    
+    nbmvm=0
+    sens=0
+    if ((coord1[0])-(coord2[0])) >= 1: #vers gauche
+        sens=1
+        nbmvm=((coord1[0])-(coord2[0]))
+    if ((coord1[1])-(coord2[1])) >= 1: #vers haut
+        sens=2
+        nbmvm=((coord1[1])-(coord2[1]))
+    if ((coord2[0])-(coord1[0])) >= 1:  #vers droite
+        sens=3
+        nbmvm=((coord2[0])-(coord1[0]))
+    if ((coord2[1])-(coord1[1])) >= 1: #vers bas
+        sens=4
+        nbmvm=((coord2[1])-(coord1[1]))
 
-    if abs(((coord1[0])-(coord2[0]))) >1 or abs(((coord1[1])-(coord2[1]))) >1:
-        if ((coord1[0])-(coord2[0])) !=0:
-            print ("déplacement en colonne")
-            if (coord1[0])>(coord2[0]):#déplacement vers le haut ,on compte donc de coord2->coord1
-                for i in range (1,(coord1[0])-(coord2[0])):
-                    print("deplacement vers le haut")
-                    print("case",i,"=",affiche.g[coord1[0]][coord1[1]+i])
-                    if affiche.g[coord2[0]+i][coord2[1]] !=0:
-                        return False
-                    else:
-                        return True
-            if (coord2[0])>(coord1[0]):#déplacement vers le bas , on compte donc de coord1->coord2
-                for i in range (((coord2[0])-(coord1[0]))-1):
-                    print("deplacement vers le bas")
-                    print("case",i,"=",affiche.g[coord1[0]][coord1[1]+i])
-                    if affiche.g[coord1[0]][coord1[1]+i] !=0:
-                        return False
-                    else:
-                        return True
-        if ((coord1[1])-(coord2[1])) !=0:
-            print ("déplacement en ligne")
-            if (coord1[1])>(coord2[1]):#déplacement vers la gauche ,on compte donc de coord2->coord1
-                for i in range (1,(coord1[1])-(coord2[1])):
-                    print("deplacement vers la gauche")
-                    print("case",i,"=",affiche.g[coord1[0]][coord1[1]+i])
-                    if affiche.g[coord2[0]][coord2[1]+i] !=0:
-                        return False
-                    else :
-                        return True
-            if (coord2[1])>(coord1[1]):#déplacement vers la droite , on compte donc de coord1->coord2
-                for i in range (((coord2[1])-(coord1[1]))-1):
-                    print("deplacment vers la droite")
-                    print("case",i,"=",affiche.g[coord1[0]][coord1[1]+i])
-                    if affiche.g[coord1[0]+i][coord1[1]] !=0:
-                        return False
-                    else :
-                        return True
-
-
-
-
-
+    if nbmvm>=1:
+        print("deplacement superieur a 1 , verification de la trajectoire")
+        if sens==4:
+            print("déplacement vers la droite")
+            for i in range (1,nbmvm):
+                #print("case"+i+"=",affiche.g[coord1[0]][coord1[1]+i])
+                if affiche.g[coord1[0]][coord1[1]+i] !=0:
+                    return False
+            return True
+        if sens==3:
+            print("déplacement vers le bas")
+            for i in range (1,nbmvm):
+                #print("case"+i+"=",affiche.g[coord1[0]+i][coord1[1]])
+                if affiche.g[coord1[0]+i][coord1[1]] !=0:
+                    return False
+            return True
+        if sens==2:
+            print("déplacement vers la gauche")
+            for i in range (1,nbmvm):
+                #print("case"+i+"=",affiche.g[coord1[0]][coord1[1]-i])
+                if affiche.g[coord1[0]][coord1[1]-i] !=0:
+                      return False
+            return True
+        if sens==1:
+            print("déplacement vers le haut")
+            for i in range (1,nbmvm):
+                #print("case"+i+"=",affiche.g[coord1[0]-i][coord1[1]])
+                if affiche.g[coord1[0]-i][coord1[1]] !=0:
+                      return False
+            return True
 
     else:
         return True
-    
-    
-    
 
         
-
-
-
-        
-#doit verifier que le déplacement se fait en ligne ou en colonne et aps les deux en meme temps
-#doit verifier si on ne traverse pas uen autre piece,
-#occupée par un autre pion , deplacement sur la meme case
-
-
+    
+    
+    
+    
 
 
 
@@ -121,7 +117,7 @@ def jcj(tour):
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("le joueur",tour,"passe son tour")
         #passetour(mode,tour)
-    if verifdeplacement(coord1,coord2,tour):
+    if verifdeplacement(coord1,coord2,tour) and verifetour(coord1,coord2):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         toursuivant(mode,tour)
@@ -133,35 +129,6 @@ def jcj(tour):
         jcj(tour)
 
 
-
-    
-    """coord1=(0,0)
-    coord2=(0,0)
-    mode=1
-    print("au tour du joueur",tour)
-    print("entrez la coordonée y du pion a déplacer")
-    coord1[0]=entreecoord()
-    for i in range (len(coord1)-1):
-        if coord1[i]==" ":
-            del coord1[i]
-    if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
-        print("selection invalide , vous devez choisir un de vos pions")
-        jcj(tour)
-    print("entrez les coordonées de la case ou déplacer le pion")
-    coord2=entreecoord()
-    #for i in range (len(coord2)-1):
-        #if coord2[i]==" ":
-            #del coord2[i]
-    if verifdeplacement(coord1,coord2,tour)==True:
-        (affiche.g[coord1[0]][coord1[1]])=0
-        (affiche.g[coord2[0]][coord2[1]])=int (tour)
-        print("ca marche , cases déplacées")
-        #testcapture(coord2)
-        #verifvictoirepions()
-        toursuivant(mode,tour)
-    else:
-        print ("déplacement invalide")
-        jcj(tour)"""
         
         
 
