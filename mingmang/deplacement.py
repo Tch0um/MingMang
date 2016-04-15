@@ -2,6 +2,7 @@ from main import *
 from gui import *
 from affiche import *
 import affiche
+import gui
 
 
 
@@ -86,6 +87,29 @@ def verifdeplacement(coord1,coord2,tour):
 
         
     
+def capture(coord2,tour):
+    if tour==1:
+        capt=2
+    elif tour==2:
+        capt=1
+    
+    i=1
+    while i !=(gui.taille-(coord2[1])):
+        if (affiche.g[coord2[0]][coord2[1]+i])==tour:
+            print("capture detectée")
+            for x in range(1,((affiche.g[coord2[0]][coord2[1]+i]-1))):
+                
+            
+        if (affiche.g[coord2[0]][coord2[1]+i])==capt:
+            i+=1
+            print("pas de capture detectée , suite de la detection")
+        if (affiche.g[coord2[0]][coord2[1]+i])==0:
+            print("case vide , pas de capture a droite")
+    
+        
+                        
+                
+    
     
     
     
@@ -116,12 +140,12 @@ def jcj(tour):
     print(coord2)
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("le joueur",tour,"passe son tour")
-        #passetour(mode,tour)
-    if verifdeplacement(coord1,coord2,tour) and verifetour(coord1,coord2):
+        passetour(mode,tour)
+    if verifdeplacement(coord1,coord2,tour) :#and verifetour(coord1,coord2):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         toursuivant(mode,tour)
-        #capture(coord2)
+        capture(coord2,tour)
         #victoirezone()
         #victoirepions()
     else:
@@ -165,72 +189,6 @@ def jcjr(tour):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""def verifdeplacement(coord1,coord2,tour):
-    coord1[0]= int(coord1[0])
-    coord1[1]= int(coord1[1])
-    coord2[0]= int(coord2[0])
-    coord2[1]= int(coord2[1])
-    
-    if int(coord1[0])-int(coord2[0])!=0 and int(coord1[1])-int(coord2[1])!=0 :
-        print("déplacement invalide : vous ne pouvez bouger qu'en ligne ou colonne")
-        return False
-    
-    if coord1==coord2:
-        #déplacement sur la même case
-        return False
-    
-    if affiche.g[int(coord2[0])][int(coord2[1])]!=0:
-        print("vous ne pouvez pas déplacer votre pion sur un autre pion")
-        return False
-
-    if abs(((coord1[0])-(coord2[0]))) >1 or abs(((coord1[1])-(coord2[1]))) >1:
-        if ((coord1[0])-(coord2[0])) !=0:
-            print ("déplacement en colonne")
-            if (coord1[0])>(coord2[0]):#déplacement vers le haut ,on compte donc de coord2->coord1
-                for i in range (1,(coord1[0])-(coord2[0])):
-                    if affiche.g[coord2[0]+i][coord2[1]] !=0:
-                        return False
-                    else:
-                        return True
-            if (coord2[0])>(coord1[0]):#déplacement vers le bas , on compte donc de coord1->coord2
-                for i in range (1,(coord2[0])-(coord1[0])):
-                    if affiche.g[coord1[0]][coord1[1]+i] !=0:
-                        return False
-                    else:
-                        return True
-        if ((coord1[1])-(coord2[1])) !=0:
-            print ("déplacement en ligne")
-            if (coord1[1])>(coord2[1]):#déplacement vers la gauche ,on compte donc de coord2->coord1
-                for i in range (1,(coord1[1])-(coord2[1])):
-                    if affiche.g[coord2[0]][coord2[1]+i] !=0:
-                        return False
-                    else :
-                        return True
-            if (coord2[1])>(coord1[1]):#déplacement vers la droite , on compte donc de coord1->coord2
-                for i in range (1,(coord2[1])-(coord1[1])):
-                    if affiche.g[coord1[0]+i][coord1[1]] !=0:
-                        return False
-                    else :
-                        return True
-    else:
-            return True"""
 
 
 
