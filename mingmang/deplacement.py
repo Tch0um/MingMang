@@ -38,46 +38,37 @@ def verifdeplacement(coord1,coord2,tour):
     
     nbmvm=0
     sens=0
-    if ((coord1[0])-(coord2[0])) >= 1: #vers gauche
+    if ((coord1[0])-(coord2[0])) >= 1:
         sens=1
         nbmvm=((coord1[0])-(coord2[0]))
-    if ((coord1[1])-(coord2[1])) >= 1: #vers haut
+    if ((coord1[1])-(coord2[1])) >= 1:
         sens=2
         nbmvm=((coord1[1])-(coord2[1]))
-    if ((coord2[0])-(coord1[0])) >= 1:  #vers droite
+    if ((coord2[0])-(coord1[0])) >= 1:
         sens=3
         nbmvm=((coord2[0])-(coord1[0]))
-    if ((coord2[1])-(coord1[1])) >= 1: #vers bas
+    if ((coord2[1])-(coord1[1])) >= 1:
         sens=4
         nbmvm=((coord2[1])-(coord1[1]))
 
     if nbmvm>=1:
-        print("deplacement superieur a 1 , verification de la trajectoire")
         if sens==4:
-            print("déplacement vers la droite")
             for i in range (1,nbmvm):
-                #print("case"+i+"=",affiche.g[coord1[0]][coord1[1]+i])
                 if affiche.g[coord1[0]][coord1[1]+i] !=0:
                     return False
             return True
         if sens==3:
-            print("déplacement vers le bas")
             for i in range (1,nbmvm):
-                #print("case"+i+"=",affiche.g[coord1[0]+i][coord1[1]])
                 if affiche.g[coord1[0]+i][coord1[1]] !=0:
                     return False
             return True
         if sens==2:
-            print("déplacement vers la gauche")
             for i in range (1,nbmvm):
-                #print("case"+i+"=",affiche.g[coord1[0]][coord1[1]-i])
                 if affiche.g[coord1[0]][coord1[1]-i] !=0:
                       return False
             return True
         if sens==1:
-            print("déplacement vers le haut")
             for i in range (1,nbmvm):
-                #print("case"+i+"=",affiche.g[coord1[0]-i][coord1[1]])
                 if affiche.g[coord1[0]-i][coord1[1]] !=0:
                       return False
             return True
@@ -85,26 +76,87 @@ def verifdeplacement(coord1,coord2,tour):
     else:
         return True
 
-        
-    
-def capture(coord2,tour):
+
+def captured(coord2,tour,taille):
     if tour==1:
         capt=2
     elif tour==2:
         capt=1
-    
-    i=1
-    while i !=(gui.taille-(coord2[1])):
-        if (affiche.g[coord2[0]][coord2[1]+i])==tour:
-            print("capture detectée")
-            for x in range(1,((affiche.g[coord2[0]][coord2[1]+i]-1))):
-                
+
+    for i in range(1,taille-coord2[1]):#droite
+        if affiche.g[coord2[0]][coord2[1]+i]==tour:
+            print("capture droite detectée , changement de la couleur des pions")
+            for x in range(i):
+                affiche.g[coord2[0]][coord2[1]+x]=tour
+            captureb(coord2,tour,taille)
+            break
+        if affiche.g[coord2[0]][coord2[1]+i]==0:
+            print("pas de capture detectée")
+            captureb(coord2,tour,taille)
+            break
+
+def captureb(coord2,tour,taille):
+    if tour==1:
+        capt=2
+    elif tour==2:
+        capt=1
+
+    for i in range(1,taille-coord2[0]):#bas
+        if affiche.g[coord2[0]+i][coord2[1]]==tour:
+            print("capture bas detectée , changement de la couleur des pions")
+            for x in range(i):
+                affiche.g[coord2[0]+x][coord2[1]]=tour
+            captureg(coord2,tour,taille)
+            break
+        if affiche.g[coord2[0]][coord2[1]+i]==0:
+            print("pas de capture detectée")
+            captureg(coord2,tour,taille)
+            break
+
+def captureg(coord2,tour,taille):
+    if tour==1:
+        capt=2
+    elif tour==2:
+        capt=1
+
+    for i in range(1,coord2[0]):
+        if affiche.g[coord2[0]][coord2[1]-i]==tour:
+            print("capture gauche detectée , changement de la couleur des pions")
+            for x in range(i):
+                affiche.g[coord2[0]][coord2[1]-x]=tour
+            captureh(coord2,tour,taille)
+            break
+        if affiche.g[coord2[0]][coord2[1]-i]==0:
+            print("pas de capture detectée")
+            captureh(coord2,tour,taille)
+            break
+        
+def captureh(coord2,tour,taille):   
+    if tour==1:
+        capt=2
+    elif tour==2:
+        capt=1
+
+    for i in range(1,taille-coord2[0]):
+        if affiche.g[coord2[0]-i][coord2[1]]==tour:
+            print("capture haut detectée , changement de la couleur des pions")
+            for x in range(i):
+                affiche.g[coord2[0]+x][coord2[1]]=tour
+            break
+        if affiche.g[coord2[0]-i][coord2[1]]==0:
+            print("pas de capture detectée")
+            break
             
-        if (affiche.g[coord2[0]][coord2[1]+i])==capt:
-            i+=1
-            print("pas de capture detectée , suite de la detection")
-        if (affiche.g[coord2[0]][coord2[1]+i])==0:
-            print("case vide , pas de capture a droite")
+         
+            
+            
+
+        
+
+   
+                    
+                     
+                    
     
         
                         
@@ -122,7 +174,7 @@ def capture(coord2,tour):
 
 
 
-def jcj(tour):
+def jcj(tour,taille):
     coord1=[0,0]
     coord2=[0,0]
     mode=1
@@ -133,24 +185,23 @@ def jcj(tour):
     print(coord1)
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
         print("selection invalide , vous devez choisir un de vos pions")
-        jcj(tour)
+        jcj(tour,taille)
     print("choisissez ou déplacer votre pion")
     coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
     print(coord2)
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("le joueur",tour,"passe son tour")
-        passetour(mode,tour)
-    if verifdeplacement(coord1,coord2,tour) :#and verifetour(coord1,coord2):
+        passetour(mode,tour,taille)
+    if verifdeplacement(coord1,coord2,tour) :#and veriftour(coord1,coord2):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
-        toursuivant(mode,tour)
-        capture(coord2,tour)
+        captured(coord2,tour,taille)
+        toursuivant(mode,tour,taille)
         #victoirezone()
         #victoirepions()
     else:
-        print("déplacement invalide")
-        jcj(tour)
+        jcj(tour,taille)
 
 
         
@@ -164,7 +215,7 @@ def jcj(tour):
 
 ############################ JOUEUR CONTRE IA FACILE############################
 
-def jciafacile(tour):
+def jciafacile(tour,taille):
     print("jeuia facile")
 
 
@@ -173,14 +224,14 @@ def jciafacile(tour):
 ############################ JOUEUR CONTRE IA DIFFICILE############################
 
 
-def jciadifficile(tour):
+def jciadifficile(tour,taille):
     print("jeuiadifficile")
 
 
 ############################ JOUEUR CONTRE JOUEUR EN RESEAU ############################
 
 
-def jcjr(tour):
+def jcjr(tour,taille):
     print("jcj en réseau")
 
 
