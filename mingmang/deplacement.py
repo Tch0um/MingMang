@@ -146,28 +146,39 @@ def captureh(coord2,tour,taille):
         if affiche.g[coord2[0]-i][coord2[1]]==0:
             print("pas de capture detectée")
             break
-            
-         
-            
-            
 
-        
 
-   
-                    
-                     
-                    
-    
-        
-                        
+def calculzone(taille):
+    #renvoie un tuple(blanc,noir) ou a correspond
+    #a la zone détenue par le joueur 1
+    #b a la zone détenue par le joueur 2
+    #(droite,gauche,haut,bas)
+    a=0
+    b=0
+    for i in range(taille):
+        for j in range(taille):
+            if affiche.g[i][j]!=0:
+                case=[0,0,0,0]
+                for k in range(1,taille-j):#droite
+                    if affiche.g[i][j+k]!=0:
+                          case[0]=affiche.g[i][j+k]
+                for k in range(1,j):#gauche
+                    if affiche.g[i][j-k]!=0:
+                          case[1]=affiche.g[i][j+k]
+                for k in range(1,taille-i):#haut
+                    if affiche.g[i+k][j]!=0:
+                          case[3]=affiche.g[i][j+k]
+                for k in range(1,i):#bas
+                    if affiche.g[i-k][j]!=0:
+                          case[4]=affiche.g[i][j+k]
+            if case.count(1)<=1 and case.count(2)==0:
+                a+=1
+            if case.count(2)<=1 and case.count(1)==0:
+    return (a,b)
                 
+                
+            
     
-    
-    
-    
-
-
-
 
                 
 ############################ JOUEUR CONTRE JOUEUR EN LOCAL ############################
@@ -192,14 +203,14 @@ def jcj(tour,taille):
     print(coord2)
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("le joueur",tour,"passe son tour")
-        passetour(mode,tour,taille)
+        toursuivant(mode,tour,taille,passe,1)
     if verifdeplacement(coord1,coord2,tour) :#and veriftour(coord1,coord2):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         captured(coord2,tour,taille)
-        toursuivant(mode,tour,taille)
-        #victoirezone()
-        #victoirepions()
+        toursuivant(mode,tour,taille,0)
+    
+        victoirepions()
     else:
         jcj(tour,taille)
 

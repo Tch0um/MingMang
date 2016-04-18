@@ -17,13 +17,16 @@ def debutjeu(mode,tour,taille):
     elif mode==4:
         deplacement.jcjr(tour,taille)
 
-def toursuivant(mode,tour,taille):
+def toursuivant(mode,tour,taille,passe):
     if tour==1:
         tour=2
     elif tour==2:
         tour=1
+    if passe==1:
+        
     affiche()
     debutjeu(mode,tour,taille)
+    
     
     
     
