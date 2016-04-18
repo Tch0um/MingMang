@@ -141,7 +141,7 @@ def captureh(coord2,tour,taille):
         if affiche.g[coord2[0]-i][coord2[1]]==tour:
             print("capture haut detectée , changement de la couleur des pions")
             for x in range(i):
-                affiche.g[coord2[0]+x][coord2[1]]=tour
+                affiche.g[coord2[0]-x][coord2[1]]=tour
             break
         if affiche.g[coord2[0]-i][coord2[1]]==0:
             print("pas de capture detectée")
