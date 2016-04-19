@@ -2,6 +2,8 @@ import main
 from random import randint
 from affiche import *
 import deplacement
+from tkinter import *
+
 
 global taille
 
@@ -23,46 +25,17 @@ def choixadversaire(taille):
     #premier joueur n'es pas éxecutée si adversaire =2
     #mode :   jcj=1   jciafacile=2    jciadifficile=3     jcjr=4
     adversaire=0
-    adversaire=int(input("choisissez votre adversaire: IA , 2éme joueur humain , 2éme joueur humain en réseau [1,2,3]"))
+    adversaire=int(input("Choisissez votre mode de jeu : joueur contre joueur local , joueur contre joueur en réseau[1,2]"))
     if adversaire==1:
-        niveauia=int(input("Choisissez le niveau de l'IA : Facile , Difficile [1/2]"))
-    elif adversaire==2:
         tour=1
         mode=1
         main.debutjeu(mode,tour,taille)
-    else:
-        premierjoueur(adversaire,niveauia,taille)
+    elif adversaire==2:
+        tour=1
+        mode=randint(1,2)
+        main.debutjeu(mode,tour,taille)
+    
          
-def premierjoueur(adversaire,niveauia):
-    #  0=joueur local  1=IA ou joueur en réseau
-    tour=(randint(1,2)) # determine le premier joueur , on prédifinit avant a l'oral qui sera 1 et 2
-    if tour==1:
-        if adversaire==3:
-            print("Vous commencez a jouer avec les pions blancs! L'adversaire jouera les pions noirs")
-            mode=4
-            main.debutjeu(mode,tour)
-        elif adversaire==1:
-            print("Vous commencez a jouer avec les pions blancs! L'IA jouera les pions noirs")
-            if niveauia==1:
-                mode=2
-                main.debutjeu(mode,tour)
-            elif niveauia==2:
-                mode=3
-                main.debutjeu(mode,tour)
-    if tour==2:
-        if adversaire==3:
-            print("Votre adversaire commence a jouer avec les pions blancs ! Vous jouerez les pions noirs")
-            mode=4
-            main.debutjeu(mode,tour)
-        elif adversaire==1:
-            print("L'IA commence a jouer avec les pions blancs! Vous jouerez les pions noirs")
-            if niveauia==1:
-                mode=2
-                main.debutjeu(mode,tour)
-            elif niveauia==2:
-                mode=3
-                main.debutjeu(mode,tour)
-
 
 def entreecoord1():
     return int((input("ligne ?")))
@@ -70,7 +43,11 @@ def entreecoord1():
 def entreecoord2():
     return int((input("colonne?")))
     
-    
+
+
+mingmang=tk()
+
+
     
 
 
