@@ -3,6 +3,7 @@ from gui import *
 from affiche import *
 import affiche
 import gui
+import math
 
 
 
@@ -10,7 +11,7 @@ import gui
 #LES NOIRS COMMENCENT TOUJOURS
 #tour=0-> joueur 1 propriétaire        tour=1-> joueur 2 invité (ou ia)
 ################################ VERIFICATIONS VICTOIRE ###############################
-def verifvictoirepions():
+def victoirepions():
     noirs=0
     blancs=0
     for i in affiche.g:
@@ -23,8 +24,6 @@ def verifvictoirepions():
         print("victoire des noirs")
     elif noirs==0:
         print("victoire des blancs")
-    else:
-        verifarea()
 
 def verifdeplacement(coord1,coord2,tour):
     if int(coord1[0])-int(coord2[0])!=0 and int(coord1[1])-int(coord2[1])!=0 :
@@ -172,8 +171,11 @@ def calculzone(taille):
                     if affiche.g[i-k][j]!=0:
                           case[4]=affiche.g[i][j+k]
             if case.count(1)<=1 and case.count(2)==0:
-                a+=1
+                if g[i][j]==1:
+                    a+=1
             if case.count(2)<=1 and case.count(1)==0:
+                if g[i][j]==2:
+                    b+=1
     return (a,b)
                 
                 
@@ -208,10 +210,17 @@ def jcj(tour,taille):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         captured(coord2,tour,taille)
-        toursuivant(mode,tour,taille,0)
-    
-        victoirepions()
+        zone=calculzone(taille)
     else:
+        jcj(tour,taille)
+    if zone[0]==(math.ceil(taille/2)):
+        print("zone des blancs superieure a la moitié du plateau , gg blancs")
+    elif zone[1]==(math.ceil(taille/2)):
+        print("zone des blancs superieure a la moitié du plateau , gg blancs")
+        
+    if  victoirepions()
+    else:
+
         jcj(tour,taille)
 
 
