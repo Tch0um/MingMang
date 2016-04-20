@@ -1,4 +1,4 @@
-import socket
+"""import socket
 
 socket= socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 socket.bind(('',15555))
@@ -11,7 +11,7 @@ while True:
     if reponse !="":
 
     reponse[0]=coord1[1]
-    reponse[1]=coord1[2]
+    reponse[1]=coord1[2]"""
     
     
 

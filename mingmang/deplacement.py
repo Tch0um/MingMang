@@ -30,7 +30,7 @@ def verifdeplacement(coord1,coord2,tour):
         return False
     
     if affiche.g[(coord2[0])][(coord2[1])]!=0:
-        print("déplacement invalide : vous ne pouvez pas déplacer votre pion sur un autre pion")
+        print("déplacement invalide : vous ne pouvez pas déplacer votre pion sur un autre pion ni revenir sur un position précedente")
         return False
     
     
@@ -172,7 +172,31 @@ def calculzone(taille):
     return (a,b)
                 
                 
-            
+def veriftour (tour,nbtour,coord1,coord2):
+    if nbtour <=2 and tour==1:
+        precoord1j1=coord1
+        preccord2j1=coord2
+        return True
+    if nbtour <=2 and tour==2:
+        precoord1j2=coord1
+        precoord2j2=coord2
+        return True
+
+    if nbtour >=3 and tour==1:
+        if coord1==precoord2j1 and coord2==precoord1j1:
+            return False
+        else:
+            precoord1j1=coord1
+            precoord2j1=coord2
+            return True
+    if nbtour >=3 and tour==2:
+        if coord1==precoord2j2 and coord2==precoord1j2:
+            return False
+        else:
+            precoord1j2=coord1
+            precoord2j2=coord2
+            return True
+        
     
 
                 
@@ -180,9 +204,8 @@ def calculzone(taille):
 
 
 
-def jcj(tour,taille):
+def jcj(tour,taille,nbtour):
     zonevictoire=(taille*taille)
-    print("zone victoire=",zonevictoire)
     zone=calculzone(taille)
     nbpions=victoirepions(taille) 
     coord1=[0,0]
@@ -195,15 +218,15 @@ def jcj(tour,taille):
     print(coord1)
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
         print("selection invalide , vous devez choisir un de vos pions")
-        jcj(tour,taille)
+        jcj(tour,taille,nbtour)
     print("choisissez ou déplacer votre pion")
     coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
     print(coord2)
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("le joueur",tour,"passe son tour")
-        toursuivant(mode,tour,taille)
-    elif verifdeplacement(coord1,coord2,tour) :#and veriftour(coord1,coord2):
+        toursuivant(mode,tour,taille,nbtour)
+    elif verifdeplacement(coord1,coord2,tour) and veriftour(tour,nbtour,coord1,coord2):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         captured(coord2,tour,taille)
@@ -216,9 +239,9 @@ def jcj(tour,taille):
         if nbpions[1]==0:
             print("victoire es blancs")
         else:
-            toursuivant(mode,tour,taille)
+            toursuivant(mode,tour,taille,nbtour)
     else:
-        jcj(tour,taille)
+        jcj(tour,taille,nbtour)
 
 
         
@@ -228,7 +251,6 @@ def jcj(tour,taille):
 
 def jcjr(tour,taille):
     zonevictoire=(taille*taille)
-    print("zone victoire=",zonevictoire)
     zone=calculzone(taille)
     nbpions=victoirepions(taille) 
     coord1=[0,0]
@@ -269,9 +291,53 @@ def jcjr(tour,taille):
 
 
 
+############################ JOUEUR CONTRE IA ############################
 
+def jcia(tour,taille,nbtour):
+    if tour==1:
+        tourjoueur(tour,taille,nbtour)
+    else:
+        touria(tour,taille,nbtour)
+        
 
-
+def tourjoueur(tour,taille,nbtour):
+    zonevictoire=(taille*taille)
+    zone=calculzone(taille)
+    nbpions=victoirepions(taille) 
+    coord1=[0,0]
+    coord2=[0,0]
+    mode=3
+    print("au tour du joueur")
+    print("Choisissez un pion a déplacer")
+    coord1[0]=entreecoord1()
+    coord1[1]=entreecoord2()
+    print(coord1)
+    if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
+        print("selection invalide , vous devez choisir un de vos pions")
+        tourjoueur(tour,taille)
+    print("choisissez ou déplacer votre pion")
+    coord2[0]=entreecoord1()
+    coord2[1]=entreecoord2()
+    print(coord2)
+    if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
+        print("Le joueur passe son tour")
+        toursuivant(mode,tour,taille,nbtour)
+    elif verifdeplacement(coord1,coord2,tour) and veriftour(tour,nbtour,coord1,coord2):
+        (affiche.g[coord1[0]][coord1[1]])=0
+        (affiche.g[coord2[0]][coord2[1]])=int (tour)
+        captured(coord2,tour,taille)
+        if zone[0]==(zonevictoire):
+            print("territoire des blancs superieur a la moitié du plateau , victoire du joueur")
+        if zone[1]==(zonevictoire):
+            print("territoire des noirs superieur a la moitié du plateau , victoire de l'ia")
+        if nbpions[0]==0:
+            print("plus de pions blancs , victoire de l'ia")
+        if nbpions[1]==0:
+            print("plus de piosn noirs , victoire du joueur")
+        else:
+            toursuivant(mode,tour,taille,nbtour)
+    else:
+        tourjoueur(tour,taille)
 
 
 

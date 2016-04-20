@@ -2,7 +2,6 @@ import main
 from random import randint
 from affiche import *
 import deplacement
-from tkinter import *
 
 
 global taille
@@ -22,18 +21,20 @@ def choixtaille():
     choixadversaire(taille)
 
 def choixadversaire(taille):
-    #premier joueur n'es pas éxecutée si adversaire =2
-    #mode :   jcj=1   jciafacile=2    jciadifficile=3     jcjr=4
-    adversaire=0
-    adversaire=int(input("Choisissez votre mode de jeu : joueur contre joueur local , joueur contre joueur en réseau[1,2]"))
+    nbtour=0
+    adversaire=int(input("Choisissez votre mode de jeu : joueur contre joueur local , joueur contre joueur en réseau , joueur contre IA[1,2,3]"))
     if adversaire==1:
         tour=1
         mode=1
-        main.debutjeu(mode,tour,taille)
+        main.debutjeu(mode,tour,taille,0)
     elif adversaire==2:
-        tour=1
-        mode=randint(1,2)
-        main.debutjeu(mode,tour,taille)
+        tour=randint(1,2)
+        mode=2
+        main.debutjeu(mode,tour,taille,nbtour)
+    elif adversaire==3:
+        tour=randint(1,2)
+        mode=3
+        main.debutjeu(mode,tour,taille,nbtour)
     
          
 
@@ -44,8 +45,6 @@ def entreecoord2():
     return int((input("colonne?")))
     
 
-
-mingmang=tk()
 
 
     
