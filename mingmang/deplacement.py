@@ -215,14 +215,12 @@ def jcj(tour,taille,nbtour):
     print("Choisissez un pion a déplacer")
     coord1[0]=entreecoord1()
     coord1[1]=entreecoord2()
-    print(coord1)
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
         print("selection invalide , vous devez choisir un de vos pions")
         jcj(tour,taille,nbtour)
     print("choisissez ou déplacer votre pion")
     coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
-    print(coord2)
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("le joueur",tour,"passe son tour")
         toursuivant(mode,tour,taille,nbtour)
@@ -247,7 +245,11 @@ def jcj(tour,taille,nbtour):
         
         
 ############################ JOUEUR CONTRE JOUEUR EN RESEAU ############################
-
+def jcia(tour,taille,nbtour):
+    if tour==1:
+        tourjoueur(tour,taille,nbtour)
+    else:
+        tourclient(tour,taille,nbtour)
 
 def jcjr(tour,taille):
     zonevictoire=(taille*taille)
@@ -255,23 +257,21 @@ def jcjr(tour,taille):
     nbpions=victoirepions(taille) 
     coord1=[0,0]
     coord2=[0,0]
-    mode=1
+    mode=2
     print("au tour du joueur ",tour)
     print("Choisissez un pion a déplacer")
     coord1[0]=entreecoord1()
     coord1[1]=entreecoord2()
-    print(coord1)
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
         print("selection invalide , vous devez choisir un de vos pions")
         jcj(tour,taille)
     print("choisissez ou déplacer votre pion")
     coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
-    print(coord2)
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("le joueur",tour,"passe son tour")
         toursuivant(mode,tour,taille)
-    elif verifdeplacement(coord1,coord2,tour) :#and veriftour(coord1,coord2):
+    elif verifdeplacement(coord1,coord2,tour) and veriftour(tour,nbtour,coord1,coord2):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         captured(coord2,tour,taille)
@@ -286,9 +286,14 @@ def jcjr(tour,taille):
         else:
             toursuivant(mode,tour,taille)
     else:
-        jcj(tour,taille)
+        jcjr(tour,taille)
     
-
+def tourclient(tour,taille,nbtour):
+    coord1=[0,0]
+    coord2=[0,0]
+    mode=2
+    
+    
 
 
 ############################ JOUEUR CONTRE IA ############################
@@ -311,14 +316,12 @@ def tourjoueur(tour,taille,nbtour):
     print("Choisissez un pion a déplacer")
     coord1[0]=entreecoord1()
     coord1[1]=entreecoord2()
-    print(coord1)
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
         print("selection invalide , vous devez choisir un de vos pions")
         tourjoueur(tour,taille)
     print("choisissez ou déplacer votre pion")
     coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
-    print(coord2)
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("Le joueur passe son tour")
         toursuivant(mode,tour,taille,nbtour)
@@ -340,5 +343,11 @@ def tourjoueur(tour,taille,nbtour):
         tourjoueur(tour,taille)
 
 
-
+def touria(tour,taille,nbtour):
+    zonevictoire=(taille*taille)
+    zone=calculzone(taille)
+    nbpions=victoirepions(taille) 
+    coord1=[0,0]
+    coord2=[0,0]
+    mode=3
 
