@@ -25,7 +25,11 @@ def victoirepions(taille):
             if j==2:
                 noir+=1
     return (blanc,noir)
-
+##
+# Verifie toutes les modalitées de déplacement
+# @param coord1: coordonées du pion a déplacer
+# @param coord2: coordonées cible du pion sélectionné
+# @return: True si le mouvement est autorisé False sinon
 def verifdeplacement(coord1,coord2,tour):
     if int(coord1[0])-int(coord2[0])!=0 and int(coord1[1])-int(coord2[1])!=0 :
         print("déplacement invalide : vous ne pouvez bouger qu'en ligne ou colonne")
@@ -313,7 +317,7 @@ def jcjr(tour,taille):
         if nbpions[1]==0:
             print("victoire es blancs")
         else:
-            toursuivant(mode,tour,taille)
+            main.toursuivant(mode,tour,taille)
     else:
         jcjr(tour,taille)
     
@@ -341,13 +345,13 @@ def tourjoueur(tour,taille,nbtour):
     coord1=[0,0]
     coord2=[0,0]
     mode=3
-    print("au tour du joueur")
+    print("au tour du joueur",tour)
     print("Choisissez un pion a déplacer")
     coord1[0]=entreecoord1()
     coord1[1]=entreecoord2()
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
         print("selection invalide , vous devez choisir un de vos pions")
-        tourjoueur(tour,taille)
+        tourjoueur(tour,taille,nbtour)
     print("choisissez ou déplacer votre pion")
     coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
@@ -367,7 +371,7 @@ def tourjoueur(tour,taille,nbtour):
         if nbpions[1]==0:
             print("plus de piosn noirs , victoire du joueur")
         else:
-            toursuivant(mode,tour,taille,nbtour)
+            main.toursuivant(mode,tour,taille,nbtour)
     else:
         tourjoueur(tour,taille)
 
