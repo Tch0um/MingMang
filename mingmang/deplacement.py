@@ -5,6 +5,8 @@ from serveur import *
 import affiche
 import gui
 import math
+import pickle as pic
+from ia import *
 
 
 
@@ -81,7 +83,7 @@ def captured(coord2,tour,taille):
     elif tour==2:
         capt=1
 
-    for i in range(1,taille-coord2[1]):#droite
+    for i in range(1,taille-coord2[1]):
         if affiche.g[coord2[0]][coord2[1]+i]==tour:
             for x in range(i):
                 affiche.g[coord2[0]][coord2[1]+x]=tour
@@ -97,7 +99,7 @@ def captureb(coord2,tour,taille):
     elif tour==2:
         capt=1
 
-    for i in range(1,taille-coord2[0]):#bas
+    for i in range(1,taille-coord2[0]):
         if affiche.g[coord2[0]+i][coord2[1]]==tour:
             for x in range(i):
                 affiche.g[coord2[0]+x][coord2[1]]=tour
@@ -149,19 +151,19 @@ def calculzone(taille):
         for j in range(taille):
             if affiche.g[i][j]!=0:
                 case=[0,0,0,0]
-                for k in range(1,taille-j):#droite
+                for k in range(1,taille-j):
                     if affiche.g[i][j+k]!=0:
                           case[0]=affiche.g[i][j+k]
                           
-                for k in range(1,j):#gauche
+                for k in range(1,j):
                     if affiche.g[i][j-k]!=0:
                           case[1]=affiche.g[i][j-k]
                           
-                for k in range(1,taille-i):#haut
+                for k in range(1,taille-i):
                     if affiche.g[i+k][j]!=0:
                           case[2]=affiche.g[i+k][j]
                           
-                for k in range(1,i):#bas
+                for k in range(1,i):
                     if affiche.g[i-k][j]!=0:
                           case[3]=affiche.g[i-k][j]
                           
@@ -205,6 +207,7 @@ def veriftour (tour,nbtour,coord1,coord2):
 
 
 def jcj(tour,taille,nbtour):
+    affiche.affiche()
     zonevictoire=(taille*taille)
     zone=calculzone(taille)
     nbpions=victoirepions(taille) 
@@ -214,6 +217,12 @@ def jcj(tour,taille,nbtour):
     print("au tour du joueur ",tour)
     print("Choisissez un pion a déplacer")
     coord1[0]=entreecoord1()
+    if coord1[0]=='save':
+        sauvegarde(tour,taille,nbtour)
+        return True
+    if coord1[0]=='load':
+        chargement(tour,taille,nbtour)
+        return True
     coord1[1]=entreecoord2()
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
         print("selection invalide , vous devez choisir un de vos pions")
@@ -237,12 +246,32 @@ def jcj(tour,taille,nbtour):
         if nbpions[1]==0:
             print("victoire es blancs")
         else:
-            toursuivant(mode,tour,taille,nbtour)
+            main.toursuivant(mode,tour,taille,nbtour)
     else:
         jcj(tour,taille,nbtour)
 
 
-        
+def sauvegarde(tour,taille,nbtour):
+    saveg=[affiche.g,tour,nbtour,taille]
+    save=open('save.txt','wb')
+    pic.dump(saveg,save)
+    save.close()
+    jcj(tour,taille,nbtour)
+
+def chargement(tour,taille,nbtour):
+    global g
+    load=open('save.txt','rb')
+    charge=pic.load(load)
+    affiche.g=charge[0]
+    tourcharge=charge[1]
+    nbtourcharge=charge[2]
+    taillecharge=charge[3]
+    load.close()
+    jcj(tourcharge,nbtourcharge,taillecharge)
+    
+    
+    
+    
         
 ############################ JOUEUR CONTRE JOUEUR EN RESEAU ############################
 def jcia(tour,taille,nbtour):
@@ -343,11 +372,5 @@ def tourjoueur(tour,taille,nbtour):
         tourjoueur(tour,taille)
 
 
-def touria(tour,taille,nbtour):
-    zonevictoire=(taille*taille)
-    zone=calculzone(taille)
-    nbpions=victoirepions(taille) 
-    coord1=[0,0]
-    coord2=[0,0]
-    mode=3
+
 

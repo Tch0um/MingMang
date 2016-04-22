@@ -22,7 +22,6 @@ def toursuivant(mode,tour,taille,nbtour):
         tour=2
     elif tour==2:
         tour=1
-    affiche()
     debutjeu(mode,tour,taille,nbtour)
     
     

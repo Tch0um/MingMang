@@ -39,7 +39,15 @@ def choixadversaire(taille):
          
 
 def entreecoord1():
-    return int((input("ligne ?")))
+    ligne=input("ligne?")
+    if ligne=='save':
+        print("sauvegarde de la partie")
+        return ligne
+    elif ligne=='load':
+        print("chargement de la partie")
+        return ligne
+    else:
+        return int(ligne)
             
 def entreecoord2():
     return int((input("colonne?")))
