@@ -59,22 +59,26 @@ def verifdeplacement(coord1,coord2,tour):
         if sens==4:
             for i in range (1,nbmvm):
                 if affiche.g[coord1[0]][coord1[1]+i] !=0:
+                    print("déplacement invalide , vous ne pouvez pas déplacer un pion par dessus un autre")
                     return False
             return True
         if sens==3:
             for i in range (1,nbmvm):
                 if affiche.g[coord1[0]+i][coord1[1]] !=0:
+                    print("déplacement invalide , vous ne pouvez pas déplacer un pion par dessus un autre")
                     return False
             return True
         if sens==2:
             for i in range (1,nbmvm):
                 if affiche.g[coord1[0]][coord1[1]-i] !=0:
-                      return False
+                    print("déplacement invalide , vous ne pouvez pas déplacer un pion par dessus un autre")
+                    return False
             return True
         if sens==1:
             for i in range (1,nbmvm):
                 if affiche.g[coord1[0]-i][coord1[1]] !=0:
-                      return False
+                    print("déplacement invalide , vous ne pouvez pas déplacer un pion par dessus un autre")
+                    return False
             return True
 
     else:
@@ -218,7 +222,7 @@ def jcj(tour,taille,nbtour):
     coord1=[0,0]
     coord2=[0,0]
     mode=1
-    print("au tour du joueur ",tour)
+    print("                 Au tour du joueur ",tour )
     print("Choisissez un pion a déplacer")
     coord1[0]=entreecoord1()
     if coord1[0]=='save':
@@ -235,7 +239,7 @@ def jcj(tour,taille,nbtour):
     coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
-        print("le joueur",tour,"passe son tour")
+        print("Le joueur",tour,"passe son tour")
         toursuivant(mode,tour,taille,nbtour)
     elif verifdeplacement(coord1,coord2,tour) and veriftour(tour,nbtour,coord1,coord2):
         (affiche.g[coord1[0]][coord1[1]])=0
@@ -291,7 +295,8 @@ def jcjr(tour,taille):
     coord1=[0,0]
     coord2=[0,0]
     mode=2
-    print("au tour du joueur ",tour)
+    print("                 Au tour du joueur",tour,"!")
+    print()
     print("Choisissez un pion a déplacer")
     coord1[0]=entreecoord1()
     coord1[1]=entreecoord2()
@@ -339,26 +344,28 @@ def jcia(tour,taille,nbtour):
         
 
 def tourjoueur(tour,taille,nbtour):
+    affiche.affiche()
     zonevictoire=(taille*taille)
     zone=calculzone(taille)
     nbpions=victoirepions(taille) 
     coord1=[0,0]
     coord2=[0,0]
     mode=3
-    print("au tour du joueur",tour)
+    print("                  A votre tour!")
+    print()
     print("Choisissez un pion a déplacer")
     coord1[0]=entreecoord1()
     coord1[1]=entreecoord2()
     if int(affiche.g[int(coord1[0])][int(coord1[1])]) != int(tour):
-        print("selection invalide , vous devez choisir un de vos pions")
+        print("Selection invalide , vous devez choisir un de vos pions")
         tourjoueur(tour,taille,nbtour)
-    print("choisissez ou déplacer votre pion")
+    print("Choisissez ou déplacer votre pion")
     coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("Le joueur passe son tour")
         toursuivant(mode,tour,taille,nbtour)
-    elif verifdeplacement(coord1,coord2,tour) and veriftour(tour,nbtour,coord1,coord2):
+    elif verifdeplacement(coord1,coord2,tour):
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         captured(coord2,tour,taille)
@@ -373,7 +380,7 @@ def tourjoueur(tour,taille,nbtour):
         else:
             main.toursuivant(mode,tour,taille,nbtour)
     else:
-        tourjoueur(tour,taille)
+        tourjoueur(tour,taille,nbtour)
 
 
 
