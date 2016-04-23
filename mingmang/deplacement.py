@@ -90,7 +90,7 @@ def captured(coord2,tour,taille):
         capt=2
     elif tour==2:
         capt=1
-
+    print("capture a droite")
     for i in range(1,taille-coord2[1]):
         if affiche.g[coord2[0]][coord2[1]+i]==tour:
             for x in range(i):
@@ -106,14 +106,14 @@ def captureb(coord2,tour,taille):
         capt=2
     elif tour==2:
         capt=1
-
+    print("capture en bas")
     for i in range(1,taille-coord2[0]):
         if affiche.g[coord2[0]+i][coord2[1]]==tour:
             for x in range(i):
                 affiche.g[coord2[0]+x][coord2[1]]=tour
             captureg(coord2,tour,taille)
             break
-        if affiche.g[coord2[0]][coord2[1]+i]==0:
+        if affiche.g[coord2[0]+i][coord2[1]]==0:
             captureg(coord2,tour,taille)
             break
 
@@ -122,7 +122,7 @@ def captureg(coord2,tour,taille):
         capt=2
     elif tour==2:
         capt=1
-
+    print("capture a gauche")
     for i in range(1,coord2[0]):
         if affiche.g[coord2[0]][coord2[1]-i]==tour:
             for x in range(i):
@@ -138,7 +138,7 @@ def captureh(coord2,tour,taille):
         capt=2
     elif tour==2:
         capt=1
-
+    print("capture en haut")
     for i in range(1,taille-coord2[0]):
         if affiche.g[coord2[0]-i][coord2[1]]==tour:
             for x in range(i):
@@ -237,11 +237,17 @@ def jcj(tour,taille,nbtour):
         jcj(tour,taille,nbtour)
     print("choisissez ou déplacer votre pion")
     coord2[0]=entreecoord1()
+    while coord2[0]>=taille:
+        print("coordonée trop grande")
+        coord2[0]=entreecoord1()
     coord2[1]=entreecoord2()
+    while coord2[0]>=taille:
+        print("coordonée trop grande")
+        coord2[1]=entreecoord2()
     if coord1[0]==coord2[0] and coord1[1]==coord2[1]:
         print("Le joueur",tour,"passe son tour")
         toursuivant(mode,tour,taille,nbtour)
-    elif verifdeplacement(coord1,coord2,tour) and veriftour(tour,nbtour,coord1,coord2):
+    elif verifdeplacement(coord1,coord2,tour): 
         (affiche.g[coord1[0]][coord1[1]])=0
         (affiche.g[coord2[0]][coord2[1]])=int (tour)
         captured(coord2,tour,taille)
