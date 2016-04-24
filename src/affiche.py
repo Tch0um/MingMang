@@ -1,13 +1,15 @@
 from main import *
 from deplacement import *
 
-"""fonctions de créactions et d'affichage de la grille dans la console"""
+##
+# Cree la grille
+# @param taille: défini la dimension du plateau
+# @return: La grille de jeu
 def creegrille(taille):
     global g
     g=[0]*taille
     for i in range(taille):
         g[i]=[0]*taille
-    """puis placement des pions"""   #0=vide   1=blanc     2=noir
     for x in range(taille):
         g[0][x]="2"
     for x in range(taille):
@@ -20,7 +22,9 @@ def creegrille(taille):
 
 
 
-
+##
+# Affiche la grille g dans la console
+# @return :La grille g en mode console
 def affiche():
     res=""
     for i in g:

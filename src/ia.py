@@ -5,6 +5,12 @@ import affiche
 essais=0
 
 #IA = PIONS N°2
+
+##
+# définis quelle logique doit adopter l'IA en fonction du tour
+# @param taille: dimension du plateau
+# @param tour: détermine qui doit jouer
+# @param nbtour: définis le numero du tour actuel
 def touria(tour,taille,nbtour):
     print(nbtour)
     print("                  Au tour de l'IA!")
@@ -43,7 +49,10 @@ def touria(tour,taille,nbtour):
         
         
 
-
+##
+# fonction de mouvement aléatoire
+# @param taille:définis la dimension du plateau
+# @return : une paire de coordonées indiquant a l'IA le déplacement a appliquer
 def mvmaleatoiredebut(taille):
     choixligne=randint(1,2)
     if choixligne==1:#selection hasard d'un pion n°2 sur la ligne du haut
@@ -74,7 +83,10 @@ def mvmaleatoiredebut(taille):
                 y2=myst
                 return[[x1,y1],[x2,y2]]
                 
-                
+##
+# fonctions de défense , permet a l'IA de protéger un pion en le déplacant hors de danger
+# @param taille: dimension du plateau
+# @return : une paire de coordonées indiquant a l'IA le déplacement a appliquer
 def dodge(taille):
     listedodge=[]
     for i in range(1,taille-1):
@@ -108,7 +120,10 @@ def dodge(taille):
                         return [[i,j],[i,j-1]]
                 
                         
-
+##
+# fonctions d'offense , permet a l'IA de capturer un pion
+# @param taille: dimension du plateau
+# @return : une paire de coordonées indiquant a l'IA le déplacement a appliquer
 def mvmcapture(taille):
      for i in range(taille):
         for j in range(1,taille-1):
@@ -129,7 +144,7 @@ def mvmcapture(taille):
                             y1=taille
                 return[[0],[x1,y1],[x2,y2]]
                 for h in range(taille):
-                    if affiche.g[i+h][j]==1:#selection hasard d'un pion n°2 sur la ligne du haut
+                    if affiche.g[i+h][j]==1:#selection hasard d'un pion n°2 sur la ligne du gauche
                         x1=0
                         y1=randint(1,taille-1)
                     elif choixligne==2:#ligne de droite
@@ -144,7 +159,7 @@ def mvmcapture(taille):
                             y1=taille
                 return[[0],[x1,y1],[x2,y2]]           
                 for h in range(1,taille+1):
-                    if affiche.g[i+h][j]==1:#selection hasard d'un pion n°2 sur la ligne du haut
+                    if affiche.g[i+h][j]==1:#selection hasard d'un pion n°2 sur la ligne du bas
                         x1=0
                         y1=randint(1,taille-1)
                     elif choixligne==2:#ligne de droite
@@ -159,7 +174,7 @@ def mvmcapture(taille):
                             y1=taille
                 return[[0],[x1,y1],[x2,y2]]            
                 for h in range(taille-2*taille):
-                    if affiche.g[i+h][j]==1:#selection hasard d'un pion n°2 sur la ligne du haut
+                    if affiche.g[i+h][j]==1:#selection hasard d'un pion n°2 sur la ligne du droite
                         x1=0
                         y1=randint(1,taille-1)
                     elif choixligne==2:#ligne de droite

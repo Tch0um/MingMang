@@ -11,10 +11,12 @@ from ia import *
 
 
 
-#0=vide 1=blanc 2=noir
-#LES NOIRS COMMENCENT TOUJOURS
-#tour=0-> joueur 1 propriétaire        tour=1-> joueur 2 invité (ou ia)
 ################################ VERIFICATIONS VICTOIRE ###############################
+
+##
+# compte les pions de chaque joueur sur le plateau
+# @param taille: dimension du plateau
+# #return: Un tuple avec le nombre de pions noirs et blancs
 def victoirepions(taille):
     noir=0
     blanc=0
@@ -84,13 +86,16 @@ def verifdeplacement(coord1,coord2,tour):
     else:
         return True
 
-
+##
+# Effectue la capture des pions vers la droite
+# @param coord2: coordonée d'arrivée du pion
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
 def captured(coord2,tour,taille):
     if tour==1:
         capt=2
     elif tour==2:
         capt=1
-    print("capture a droite")
     for i in range(1,taille-coord2[1]):
         if affiche.g[coord2[0]][coord2[1]+i]==tour:
             for x in range(i):
@@ -101,12 +106,16 @@ def captured(coord2,tour,taille):
             captureb(coord2,tour,taille)
             break
 
+##
+# Effectue la capture des pions vers le bas
+# @param coord2: coordonée d'arrivée du pion
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
 def captureb(coord2,tour,taille):
     if tour==1:
         capt=2
     elif tour==2:
         capt=1
-    print("capture en bas")
     for i in range(1,taille-coord2[0]):
         if affiche.g[coord2[0]+i][coord2[1]]==tour:
             for x in range(i):
@@ -116,13 +125,17 @@ def captureb(coord2,tour,taille):
         if affiche.g[coord2[0]+i][coord2[1]]==0:
             captureg(coord2,tour,taille)
             break
-
+        
+##
+# Effectue la capture des pions vers la gauche
+# @param coord2: coordonée d'arrivée du pion
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
 def captureg(coord2,tour,taille):
     if tour==1:
         capt=2
     elif tour==2:
         capt=1
-    print("capture a gauche")
     for i in range(1,coord2[0]):
         if affiche.g[coord2[0]][coord2[1]-i]==tour:
             for x in range(i):
@@ -132,13 +145,17 @@ def captureg(coord2,tour,taille):
         if affiche.g[coord2[0]][coord2[1]-i]==0:
             captureh(coord2,tour,taille)
             break
-        
+
+##
+# Effectue la capture des pions vers le haut
+# @param coord2: coordonée d'arrivée du pion
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau   
 def captureh(coord2,tour,taille):   
     if tour==1:
         capt=2
     elif tour==2:
         capt=1
-    print("capture en haut")
     for i in range(1,taille-coord2[0]):
         if affiche.g[coord2[0]-i][coord2[1]]==tour:
             for x in range(i):
@@ -147,12 +164,10 @@ def captureh(coord2,tour,taille):
         if affiche.g[coord2[0]-i][coord2[1]]==0:
             break
 
-
+##
+# @param taille:définis la dimension du plateau
+# @return :renvoie un tuple(blanc,noir) ou a correspond a la zone détenue par le joueur 1 et b a la zone détenue par le joueur 2
 def calculzone(taille):
-    #renvoie un tuple(blanc,noir) ou a correspond
-    #a la zone détenue par le joueur 1
-    #b a la zone détenue par le joueur 2
-    #(droite,gauche,haut,bas)
     a=0
     b=0
     for i in range(taille):
@@ -181,7 +196,14 @@ def calculzone(taille):
                     b+=1
     return (a,b)
                 
-                
+
+##
+# verifie si un joueur n'effectue pas un déplacement non-autorisé en revenant sur une case d'un tour prédecent
+# @param tour: détermine qui doit jouer
+# @param coord1: coordonée d'un pion a déplacer
+# @param coord2: coordonée d'arrivée du pion
+# @param nbtour: définis le numero du tour actuel
+# @return :True si le déplacement est illégal False sinon
 def veriftour (tour,nbtour,coord1,coord2):
     if nbtour <=2 and tour==1:
         precoord1j1=coord1
@@ -213,7 +235,11 @@ def veriftour (tour,nbtour,coord1,coord2):
 ############################ JOUEUR CONTRE JOUEUR EN LOCAL ############################
 
 
-
+##
+# gére le tour d'un joueur en mode joueur contre joueur
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
+# @param nbtour: définis le numero du tour actuel
 def jcj(tour,taille,nbtour):
     affiche.affiche()
     zonevictoire=(taille*taille)
@@ -264,7 +290,11 @@ def jcj(tour,taille,nbtour):
     else:
         jcj(tour,taille,nbtour)
 
-
+##
+# sauvegarde la partie en cours
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
+# @param nbtour: définis le numero du tour actuel
 def sauvegarde(tour,taille,nbtour):
     saveg=[affiche.g,tour,nbtour,taille]
     save=open('save.txt','wb')
@@ -272,6 +302,12 @@ def sauvegarde(tour,taille,nbtour):
     save.close()
     jcj(tour,taille,nbtour)
 
+
+##
+# charge la partie sauvegardée dans le fichier  save.txt
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
+# @param nbtour: définis le numero du tour actuel
 def chargement(tour,taille,nbtour):
     global g
     load=open('save.txt','rb')
@@ -287,13 +323,24 @@ def chargement(tour,taille,nbtour):
     
     
         
+
 ############################ JOUEUR CONTRE JOUEUR EN RESEAU ############################
+
+##
+# définit qui doit jouer en fonction de la variable tour
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
+# @param nbtour: définis le numero du tour actuel
 def jcia(tour,taille,nbtour):
     if tour==1:
         tourjoueur(tour,taille,nbtour)
     else:
         tourclient(tour,taille,nbtour)
-
+        
+##
+# gére le tour d'un joueur en mode joueur contre joueur en réseau
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
 def jcjr(tour,taille):
     zonevictoire=(taille*taille)
     zone=calculzone(taille)
@@ -331,24 +378,28 @@ def jcjr(tour,taille):
             main.toursuivant(mode,tour,taille)
     else:
         jcjr(tour,taille)
-    
-def tourclient(tour,taille,nbtour):
-    coord1=[0,0]
-    coord2=[0,0]
-    mode=2
-    
-    
+
 
 
 ############################ JOUEUR CONTRE IA ############################
 
+
+##
+# définit qui doit jouer en fonction de la variable tour
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
+# @param nbtour: définis le numero du tour actuel
 def jcia(tour,taille,nbtour):
     if tour==1:
         tourjoueur(tour,taille,nbtour)
     else:
         touria(tour,taille,nbtour)
         
-
+##
+# gére le tour d'un joueur en mode joueur contre joueur en réseau
+# @param tour: détermine qui doit jouer
+# @param taille: définis la dimension du plateau
+# @param nbtour: définis le numero du tour actuel
 def tourjoueur(tour,taille,nbtour):
     affiche.affiche()
     zonevictoire=(taille*taille)

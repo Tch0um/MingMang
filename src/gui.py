@@ -3,10 +3,11 @@ from random import randint
 from affiche import *
 import deplacement
 import affiche
-
-
 global taille
 
+
+##
+# demande a l'utilisateur la taille de son plateau
 def choixtaille():
     taille=0
     choixtaille=input("choisissez la taille du plateau : petit(9x9) , classique(19x19) , grand(29x29) ou éditer votre propre plateau [P/C/G/E]")
@@ -24,7 +25,10 @@ def choixtaille():
     else:  
         creegrille(taille)
         choixadversaire(taille)
-    
+
+
+##
+# Propose a l'utilisateur de rentrer des coordonées pour creer son propre plateau
 def editplateau():
     print("Choisissez la taille de votre plateau")
     taille=int(input('>>'))
@@ -53,7 +57,10 @@ def editplateau():
     
     
     
-    
+##
+# demande a l'utilisateur de choisir son adversaire et lance le mode de jeu en conséquence dans le module déplacement
+# @param taille: définis la dimension du plateau
+
 def choixadversaire(taille):
     nbtour=0
     adversaire=int(input("Choisissez votre mode de jeu : joueur contre joueur local , joueur contre joueur en réseau , joueur contre IA[1,2,3]"))
@@ -78,7 +85,8 @@ def choixadversaire(taille):
         
     
          
-
+##
+# demande les coordonées du pion a déplacer a l'utilisateur
 def entreecoord1():
     ligne=input("ligne?")
     if ligne=='save':
@@ -89,7 +97,9 @@ def entreecoord1():
         return ligne
     else:
         return int(ligne)
-            
+
+##
+# demande les coordonées de la case ou déplacer le pion a l'utilisateur
 def entreecoord2():
     return int((input("colonne?")))
     
