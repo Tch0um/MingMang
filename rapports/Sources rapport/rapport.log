@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.2)  24 APR 2016 16:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.2)  24 APR 2016 21:53
 entering extended mode
-**"Manuel d'utilisation.tex"
-("Manuel d'utilisation.tex"
+**rapport.tex
+(rapport.tex
 LaTeX2e <2015/10/01> patch level 1
 Babel <3.9m> and hyphenation patterns for 69 languages loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -334,7 +334,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen106
 \Gin@req@width=\dimen107
 )
-("Manuel d'utilisation.aux")
+(rapport.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
@@ -350,8 +350,7 @@ LaTeX Font Info:    ... okay on input line 6.
 LaTeX Info: Redefining \degres on input line 6.
 LaTeX Info: Redefining \dots on input line 6.
 LaTeX Info: Redefining \up on input line 6.
-
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count93
 \scratchdimen=\dimen108
@@ -364,113 +363,88 @@ LaTeX Info: Redefining \up on input line 6.
 \MPnumerator=\count97
 \makeMPintoPDFobject=\count98
 \everyMPtoPDFconversion=\toks18
-) <images/mingmang.jpg, id=1, 451.6875pt x 339.2675pt>
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <24.88> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20.74> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 17.
+ <images/mingmang.jpg, id=1, 451.6875pt x 339.2675pt>
 File: images/mingmang.jpg Graphic file (type jpg)
 
 <use images/mingmang.jpg>
-Package pdftex.def Info: images/mingmang.jpg used on input line 23.
+Package pdftex.def Info: images/mingmang.jpg used on input line 27.
 (pdftex.def)             Requested size: 225.84319pt x 169.63333pt.
  [1
 
 {C:/Users/Tchoum/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/m
 ingmang.jpg>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 28.
+(Font)              <14.4> on input line 45.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 28.
+(Font)              <7> on input line 45.
 
-<images/lancement.png, id=8, 426.09187pt x 76.78688pt>
-File: images/lancement.png Graphic file (type png)
-
-<use images/lancement.png>
-Package pdftex.def Info: images/lancement.png used on input line 39.
-(pdftex.def)             Requested size: 426.09082pt x 76.78668pt.
-
-Overfull \hbox (36.09082pt too wide) in paragraph at lines 36--41
-[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--41
+Underfull \hbox (badness 10000) in paragraph at lines 53--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--49
+Underfull \hbox (badness 10000) in paragraph at lines 53--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--49
+Underfull \hbox (badness 10000) in paragraph at lines 53--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--49
+Underfull \hbox (badness 10000) in paragraph at lines 53--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--61
+Underfull \hbox (badness 10000) in paragraph at lines 53--82
+
+ []
+
+[1] [2] [3] [4] [5]
+Overfull \hbox (1.07967pt too wide) in paragraph at lines 169--173
+\T1/cmr/m/n/12 Le mo-dule client quand a lui en-voie en per-ma-nence une de-man
+de de connexion
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 179--182
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--61
+Underfull \hbox (badness 10000) in paragraph at lines 179--182
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--61
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 64--70
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 64--70
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 64--70
-
- []
-
-[2 <./images/lancement.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 73--79
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--79
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--79
-
- []
-
-[3] ("Manuel d'utilisation.aux") ) 
+[7] (rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 2629 strings out of 493636
- 33689 string characters out of 3143753
+ 2642 strings out of 493636
+ 33717 string characters out of 3143753
  95719 words of memory out of 3000000
- 6016 multiletter control sequences out of 15000+200000
- 9324 words of font info for 25 fonts, out of 3000000 for 9000
+ 6028 multiletter control sequences out of 15000+200000
+ 13677 words of font info for 35 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 28i,5n,30p,377b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/
-cm-super/cm-super-t1.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-sup
-er/sfbx1728.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm12
-00.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm2488.pfb>
-Output written on "Manuel d'utilisation.pdf" (3 pages, 109261 bytes).
+ 28i,5n,30p,630b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-sup
+er-t1.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1200.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1728.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/cm-super/sfrm1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/cm-super/sfrm2488.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/cm-super/sfti1200.pfb>
+Output written on rapport.pdf (8 pages, 174067 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
+ 59 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
