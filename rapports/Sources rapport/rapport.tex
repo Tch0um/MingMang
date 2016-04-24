@@ -182,6 +182,49 @@ La fonction vérifiant que le déplacement commandé par un joueur n'implique pa
 \paragraph{Mode joueur contre IA}
 Le développement du mode joueur contre IA a été abandonné peu avant la date limite faute de temps , il me fallait me concentrer sur d'autres fonctionnalités plus importantes .
 
+\newpage
+\begin{center}
+\section{Tests effectués}
+\end{center}
+
+\paragraph{}
+Une batterie de tests ont été effectués via la fonction assert() de python pour vérifier la fonctionnalité du programme:
+\newline
+
+\emph{fonction creegrille(cree le plateau)}
+\begin{itemize}
+\item test unitaire aux extrêmes : 0 , 999999999 -> fonctionnel
+\item test unitaire avec float   : 0.5 0.75  -> erreur si le total de la surface du plateau n'est pas rond
+\item test unitaire avec string  : "abs"  -> erreur
+\newline
+\end{itemize}
+
+\emph{fonction entrecoord(entree des coordonnées )}
+\begin{itemize}
+\item test unitaire aux extrêmes :  999999999 -> erreur si sortie de la liste g
+\item test unitaire avec float   : 0.5 0.75  -> erreur 
+\item test unitaire avec string  : "abs"  -> erreur
+\end{itemize}
+
+\emph{fonction editplateau(editeur de plateau libre)}
+\begin{itemize}
+\item test unitaire aux extrêmes pour la couleur du pion: 999999999 -> erreur dans les vérifications de déplacement plus loin dans le programme
+\item test unitaire avec float pour la couleur du pion: erreur
+\item test unitaire avec string  : "abs"  -> erreur
+\item test unitaire aux extrêmes pour les coordonées de placement: 9999999-> erreur si sortie de la grille
+\item test unitaire avec float pour les coordonnées: erreur
+\item test unitaire avec string pour les coordonnées: erreur
+\newline
+\end{itemize}
+
+
+\emph{choixmode(choix du mode de jeu)}
+\begin{itemize}
+\i
+
+
+
+
 
 
 
