@@ -1,3 +1,5 @@
+#GORON Nathan 21503237
+
 from main import *
 from gui import *
 from affiche import *

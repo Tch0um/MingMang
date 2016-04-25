@@ -1,3 +1,5 @@
+#GORON Nathan 21503237
+
 import deplacement
 from gui import *
 from random import randint

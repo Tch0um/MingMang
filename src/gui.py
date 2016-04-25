@@ -1,3 +1,5 @@
+#GORON Nathan 21503237
+
 import main
 from random import randint
 from affiche import *

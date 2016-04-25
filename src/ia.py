@@ -1,3 +1,5 @@
+#GORON Nathan 21503237
+
 from deplacement import *
 from affiche import *
 import affiche
