@@ -1,0 +1,51 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Capture des besoins , cahier des charges}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}\relax $\@@underline {\hbox {R\IeC {\'e}sum\IeC {\'e}:}}\mathsurround \z@ $\relax }{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}\relax $\@@underline {\hbox {Fonctionnalit\IeC {\'e}s:}}\mathsurround \z@ $\relax }{2}{subsection.1.2}
+\contentsline {paragraph}{}{2}{section*.2}
+\contentsline {subsection}{\numberline {1.3}\relax $\@@underline {\hbox {Fonctionnalit\IeC {\'e}s additionnelles :}}\mathsurround \z@ $\relax }{3}{subsection.1.3}
+\contentsline {paragraph}{}{3}{section*.3}
+\contentsline {subsection}{\numberline {1.4}\relax $\@@underline {\hbox {Priorit\IeC {\'e} , importance relative des fonctionnalit\IeC {\'e}s:}}\mathsurround \z@ $\relax }{3}{subsection.1.4}
+\contentsline {paragraph}{}{3}{section*.4}
+\contentsline {subsection}{\numberline {1.5}\relax $\@@underline {\hbox {Accessibilit\IeC {\'e} et pr\IeC {\'e}-requis syst\IeC {\`e}me:}}\mathsurround \z@ $\relax }{3}{subsection.1.5}
+\contentsline {paragraph}{}{3}{section*.5}
+\contentsline {subsection}{\numberline {1.6}\relax $\@@underline {\hbox {Internationalit\IeC {\'e}:}}\mathsurround \z@ $\relax }{3}{subsection.1.6}
+\contentsline {paragraph}{}{3}{section*.6}
+\contentsline {subsection}{\numberline {1.7}\relax $\@@underline {\hbox {Date fix\IeC {\'e}es:}}\mathsurround \z@ $\relax }{3}{subsection.1.7}
+\contentsline {paragraph}{}{3}{section*.7}
+\contentsline {subsection}{\numberline {1.8}\relax $\@@underline {\hbox {Mat\IeC {\'e}riels et choix des technologies}}\mathsurround \z@ $\relax }{4}{subsection.1.8}
+\contentsline {paragraph}{}{4}{section*.8}
+\contentsline {paragraph}{Les modules suivant seront probablement utilis\IeC {\'e}s:}{4}{section*.9}
+\contentsline {subsection}{\numberline {1.9}\relax $\@@underline {\hbox {Gestion des erreurs:}}\mathsurround \z@ $\relax }{4}{subsection.1.9}
+\contentsline {paragraph}{}{4}{section*.10}
+\contentsline {subsection}{\numberline {1.10}\relax $\@@underline {\hbox {Performances requises}}\mathsurround \z@ $\relax }{4}{subsection.1.10}
+\contentsline {paragraph}{}{4}{section*.11}
+\contentsline {subsection}{\numberline {1.11}\relax $\@@underline {\hbox {Utilisation de l'interface}}\mathsurround \z@ $\relax }{4}{subsection.1.11}
+\contentsline {paragraph}{}{4}{section*.12}
+\contentsline {section}{\numberline {2}Analyse du d\IeC {\'e}coupage et de la conception}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}\relax $\@@underline {\hbox {Modules }}\mathsurround \z@ $\relax }{5}{subsection.2.1}
+\contentsline {paragraph}{}{5}{section*.13}
+\contentsline {subsection}{\numberline {2.2}\relax $\@@underline {\hbox {Fonctions du module d\IeC {\'e}placement }}\mathsurround \z@ $\relax }{5}{subsection.2.2}
+\contentsline {paragraph}{}{5}{section*.14}
+\contentsline {section}{\numberline {3}Fonctionnalit\IeC {\'e}s additionnelles}{6}{section.3}
+\contentsline {paragraph}{}{6}{section*.15}
+\contentsline {subsection}{\numberline {3.1}\relax $\@@underline {\hbox {Variantes de plateau}}\mathsurround \z@ $\relax }{6}{subsection.3.1}
+\contentsline {paragraph}{}{6}{section*.16}
+\contentsline {subsection}{\numberline {3.2}\relax $\@@underline {\hbox {\IeC {\'E}diteur de plateau}}\mathsurround \z@ $\relax }{6}{subsection.3.2}
+\contentsline {paragraph}{}{6}{section*.17}
+\contentsline {subsection}{\numberline {3.3}\relax $\@@underline {\hbox {Sauvegarde de partie}}\mathsurround \z@ $\relax }{6}{subsection.3.3}
+\contentsline {paragraph}{}{6}{section*.18}
+\contentsline {subsection}{\numberline {3.4}\relax $\@@underline {\hbox {IA}}\mathsurround \z@ $\relax }{7}{subsection.3.4}
+\contentsline {paragraph}{}{7}{section*.19}
+\contentsline {subsection}{\numberline {3.5}\relax $\@@underline {\hbox {Joueur contre joueur en r\IeC {\'e}seau local(non fonctionnel)}}\mathsurround \z@ $\relax }{7}{subsection.3.5}
+\contentsline {paragraph}{}{7}{section*.20}
+\contentsline {paragraph}{}{7}{section*.21}
+\contentsline {section}{\numberline {4}Difficult\IeC {\'e}s rencontr\IeC {\'e}s}{8}{section.4}
+\contentsline {paragraph}{Fonction anti-chevauchement}{8}{section*.22}
+\contentsline {paragraph}{Mode joueur contre IA}{8}{section*.23}
+\contentsline {paragraph}{Mode joueur contre joueur en r\IeC {\'e}seau local}{8}{section*.24}
+\contentsline {section}{\numberline {5}Tests effectu\IeC {\'e}s}{9}{section.5}
+\contentsline {paragraph}{}{9}{section*.25}
+\contentsline {section}{\numberline {6}Conclusion et perspectives}{10}{section.6}
+\contentsline {paragraph}{}{10}{section*.26}
+\contentsline {paragraph}{Sources , aides consult\IeC {\'e}es en ligne}{10}{section*.27}

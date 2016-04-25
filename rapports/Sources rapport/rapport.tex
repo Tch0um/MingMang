@@ -3,6 +3,7 @@
 \usepackage[french]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \begin{document}
 \begin{titlepage}
 
@@ -29,7 +30,7 @@ Projet méthodologie année 2015-2016
 \end{titlepage}
 \newpage
 
-
+\tableofcontents
 
 
 
@@ -53,7 +54,7 @@ Il s'agira de développer un jeu de Ming-Mang jouable jusqu'à deux joueurs en c
 Le jeu devra fonctionner en console selon les régles suivantes:
 \newline
 Les joueurs jouent tour à tour une seule pierre. Les pièces bougent en ligne droite comme
-la tour aux échecs. Il n’est pas permis de traverser ou de s’arrêter sur une autre pièce
+la tour aux échecs. Il n’est pas permis de traverser ou de s'arrêter sur une autre pièce
 \newline
 \newline
 Un joueur ne peut pas jouer un coup qui le ramènerait dans une situation antérieure.
@@ -61,7 +62,7 @@ Il peut par contre passer son tour.
 \newline
 \newline
 Toutes pierres encadrées sur une ligne ou une colonne par deux pierres ennemies sont
-capturées et remplacées par les pierres de l’adverse
+capturées et remplacées par les pierres de l'adversaire
 \newline
 On ne perd pas sa pièce si on la déplace entre deux adversaires 
 \newline
@@ -90,7 +91,7 @@ Pour jouer , le joueur entre la coordonnée d'un pion a déplacer puis la coordo
 \item Un éditeur de plateau pour créer vos propre terrain de jeu
 \item Un mode de jeu joueur contre IA
 \item Un mode de jeu joueur contre joueur en réseau local (deux machines connectée sur le meme réseau)
-\item Un systéme de sauvegarde et de chargement de partie
+\item Un système de sauvegarde et de chargement de partie
 \end{itemize}
 
 
@@ -113,9 +114,35 @@ Le jeu sera disponible uniquement en Français
 \paragraph{}
 Le programme , le manuel d'utilisation , le rapport et la documentation HTML seront remis Lundi 25/04/2016
 
+\subsection{\underline{Matériels et choix des technologies}}
+\paragraph{}
+Le programme sera développé uniquement en python et ne nécessite l'installation d'aucun modules additionel .Une documentation HTML sera disponible dans le fichier "HTML" (index.html).
+\newline
+\paragraph{Les modules suivant seront probablement utilisés:}
+\begin{itemize}
+\item Pickle(sauvegarde des parties)
+\item Socket(communication des modules via réseau local)
+\end{itemize}
+
+
 \subsection{\underline{Gestion des erreurs:}}
 \paragraph{}
 La plupart des entrées utilisateur seront vérifiées et ne pourront pas provoquer d'erreurs. cependant il est possible que si l'utilisateur entre des coordonnées ou des commandes non prévues , le programme plante
+
+\subsection{\underline{Performances requises}}
+\paragraph{}
+Le programme ne nécessite que trés peu de performance pour fonctionner, celui a également été testé sur l'application python pour mobile.
+
+
+\subsection{\underline{Utilisation de l'interface}}
+\paragraph{}
+Une fois lancé , le jeu s'utilisera comme indiqué dans la capture ci-dessous:
+\begin{center}
+\includegraphics[scale=0.5]{images/interface.png}
+\end{center}
+
+
+
 \newpage
 \begin{center}
 \section{Analyse du découpage et de la conception}
@@ -125,10 +152,10 @@ La plupart des entrées utilisateur seront vérifiées et ne pourront pas provoq
 \paragraph{}
 Le programme est décomposé en 7 modules différents :
 \begin{itemize}
-\item Le module main , a partir duquel on lance le programme .Ce module est léger est coordonne le lancement de toutes les autres fonctions
+\item Le module main , a partir duquel on lance le programme .Ce module est léger et coordonne le lancement de toutes les autres fonctions
 \item Le module gui ; interface avec l'utilisateur , toutes les communications homme-programme passe par ce module .Celui-ci s'avérera utile pour une éventuelle implantation d'interface graphique a l'avenir
-\item Le module affiche , dessine la grille a l'initialisation et l'affiche a chaque fin de tour .
-\item Le module déplacement , module le plus lourd du programme : Il contient toutes les fonctions d'applications  des choix de l'utilisateur pour tout les mode de jeu ainsi que la vérification des règles.
+\item Le module affiche , dessine la grille a l'initialisation et l'affiche a chaque début de tour .
+\item Le module déplacement , module le plus lourd du programme : Il contient toutes les fonctions d'applications  des choix de l'utilisateur pour tout les modes de jeu ainsi que la vérification des règles.
 \item Le module IA , génère une paire de coordonnées pour le mode joueur contre IA basée sur une succession de raisonnement et de règles simple.
 \item Modules serveur et client , module du mode de jeu joueur contre joueur en réseau (hélas non fonctionnel), leurs fonctionnement sera expliqué plus loin dans ce rapport
 \end{itemize}
@@ -139,30 +166,36 @@ Le module déplacement est le principal module du programme , il gère les modif
 \newline Lorsque le joueur lance le programme il choisit un mode de jeu , ce choix définira laquelle des trois fonctions de jeu se lance dans le module déplacement (jcia pour le mode de jeu joueur contre ia, jcj pour le mode de jeu classique, ou jcjr pour le mode de jeu en réseau). 
 \newline
 Une fois le jeu initié les règles sont vérifiées a chaque fois qu'un joueur joue grâce a trois fonctions : la fonctions verifdéplacement qui vérifie les règles de bases tels que l'interdiction du chevauchement des pions ou encore le fait que l'on ne puisse déplacer son pion qu'en colonne ou en ligne .La fonction verifzone vérifie tout les règles liées au principe de territoire et la fonction veriftour qui stoppe le jeu si deux joueurs passent leurs tours.
+
+
+
+
+
 \newpage
 \begin{center}
 \section{Fonctionnalités additionnelles}
 \end{center}
+\vspace{1cm}
 \paragraph{}
 Sur les 5 fonctionnalités additionnelles évoquées dans le cahier des charges , 4 sont opérationnelles dans la version du programme rendue le 25/04 , le mode joueur contre joueur en réseau n'est hélas pas fonctionnel mais les traces de recherche sont toujours présente dans le dossier src du projet.
 
-\subsection{Variantes de plateau}
+\subsection{\underline{Variantes de plateau}}
 \paragraph{}
 Au lancement l'utilisateur choisis parmi trois variantes de jeu , il s'agit de deux versions de taille différente du plateau classique , Je ne propose pas de plateau a motifs différent car ceux-ci aurait provoqué des problèmes de compatibilité avec le mode IA .En effet celui-ci se base ,entre autre , sur la position initiale des pions pour jouer un coup.
 
-\subsection{Éditeur de plateau}
+\subsection{\underline{Éditeur de plateau}}
 \paragraph{}
 En plus des deux variantes proposées au joueur , celui-ci peut également créer sont propre plateau grâce a l'éditeur de plateau : le joueur choisis la dimension de son plateau puis place un par un les pions .Aucune limite ne lui est imposé , l'utilisateur lance le jeu en tapant "jeu" lorsqu'il a terminé l'édition de son plateau pour lancer la partie , le plateau personnalisé est détruit a la fin de la partie.Pour les mêmes raison évoquées dans le paragraphe précédent , le mode IA n'est pas compatible avec un plateau personnalisé
 
-\subsection{Sauvegarde de partie}
+\subsection{\underline{Sauvegarde de partie}}
 \paragraph{}
 En plus d'être très utile  pour tester le programme et corriger les erreurs , la fonction de sauvegarde/chargement de partie est une fonctionnalité simple a implémenter et est donc rentable en terme de temps et d'efforts , celle-ci se base sur le module pickle et permet au joueur de sauvegarder une partie au moment ou il lui est demandé quel pion il souhaite déplacer .Il pourra ensuite retrouver sa partie et rejouer en respectant le tour du joueur au moment il a sauvegarder la partie.
-
-\subsection{IA}
+\newpage
+\subsection{\underline{IA}}
 \paragraph{}
 Le mode joueur contre IA est la fonctionnalité ayant demandé le plus de travail dans le développement de l'application , elle se base sur un raisonnement simple : durant un certains nombre de tour (varie en fonction de la taille du plateau), l'IA déplace ses pions sur le plateau de manière aléatoire pour permettre de créer des opportunités , puis elle détecte ensuite si elle peut capturer des pions adverses ou défendre ses pions. En fonction du choix le plus intéressant ,elle déplace son pion .Si aucune des deux options n'est possible ou rentable , l'IA déplace un pion au hasard.
 
-\subsection{Joueur contre joueur en réseau local(non fonctionnel)}
+\subsection{\underline{Joueur contre joueur en réseau local(non fonctionnel)}}
 \paragraph{}
 Le mode joueur contre joueur en réseau local aurait permit a deux joueur de jouer une partie sur deux machines différents .Grâce au module socket , le second joueur n'aurait eu besoin que de télécharger le module client du programme pour pouvoir voir la grille et jouer tout comme son adversaire .
 \paragraph{}
@@ -174,6 +207,7 @@ Le module client quand a lui envoie en permanence une demande de connexion a l'I
 \begin{center}
 \section{Difficultés rencontrés}
 \end{center}
+\vspace{2cm}
 
 \paragraph{Fonction anti-chevauchement}
 La fonction vérifiant que le déplacement commandé par un joueur n'implique pas le chevauchement de deux pions fut la première fonction véritablement compliqué du programme , elle demandait une bonne visualisation de la grille pour bien rédiger les fonctions de parcours .Il s'agit de la fonctionnalité m'ayant demandé le plus de temps et d'essais parmis toutes les autres .Cependant les difficultés que son développement m'a donné m'ont permis de rédiger plus rapidement d'autres fonctions comme la vérification des zones ou la logique de l'IA.
@@ -181,12 +215,17 @@ La fonction vérifiant que le déplacement commandé par un joueur n'implique pa
 \newline
 \paragraph{Mode joueur contre IA}
 Le développement du mode joueur contre IA a été abandonné peu avant la date limite faute de temps , il me fallait me concentrer sur d'autres fonctionnalités plus importantes .
+\newline
+\newline
+\paragraph{Mode joueur contre joueur en réseau local}
+Le mode joueur contre joueur en réseau local n'est pas fonctionnel dans la version rendue le 25/04 , j'ai éprouvé des difficultés a faire transmettre les coordonnées entre le module client et serveur .De plus , je ne suis même pas parvenu a connecter le module client  au module serveur sur le réseau de l'université (tandis que j'y parvenais sur mon réseau personnel a domicile). 
+
 
 \newpage
 \begin{center}
 \section{Tests effectués}
 \end{center}
-
+\vspace{2cm}
 \paragraph{}
 Une batterie de tests ont été effectués via la fonction assert() de python pour vérifier la fonctionnalité du programme:
 \newline
@@ -209,19 +248,33 @@ Une batterie de tests ont été effectués via la fonction assert() de python po
 \emph{fonction editplateau(editeur de plateau libre)}
 \begin{itemize}
 \item test unitaire aux extrêmes pour la couleur du pion: 999999999 -> erreur dans les vérifications de déplacement plus loin dans le programme
-\item test unitaire avec float pour la couleur du pion: erreur
+\item test unitaire avec float pour la couleur du pion -> erreur
 \item test unitaire avec string  : "abs"  -> erreur
-\item test unitaire aux extrêmes pour les coordonées de placement: 9999999-> erreur si sortie de la grille
-\item test unitaire avec float pour les coordonnées: erreur
-\item test unitaire avec string pour les coordonnées: erreur
+\item test unitaire aux extrêmes pour les coordonées de placement -> 9999999-> erreur si sortie de la grille
+\item test unitaire avec float pour les coordonnées -> erreur
+\item test unitaire avec string pour les coordonnées -> erreur
 \newline
 \end{itemize}
 
 
-\emph{choixmode(choix du mode de jeu)}
+\emph{fonction de sauvegarde}
 \begin{itemize}
-\i
+\item test unitaire pour une liste trés grande (1000000x1000000) -> fonctionnel
+\item test unitaire pour une liste de string (composée de a) -> erreur
+\item test unitaire sur la sauvegarde du tour pour une valeur infiniment grande -> fonctionnel
+\end{itemize}
 
+\newpage
+
+\section{Conclusion et perspectives}
+\paragraph{}
+Finalement, l'application n'est pas en version finale .En effet , certaines situations doivent être corrigées et certaines fonctionnalités seront développés (particulièrement le mode joueur contre joueur en réseau).
+\newline
+\paragraph{Sources , aides consultées en ligne}
+\begin{itemize}
+\item Tutoriel socket de tutorialspoint : \href {http://www.tutorialspoint.com/python/python_networking.htm}{lien}
+\item "Introduction au technique de base pour l'intelligence artificielle" par Damien guichard  \href{http://damien-guichard.developpez.com/tutoriels/algo/introduction-techniques-IA/}{lien}
+\end{itemize} 
 
 
 

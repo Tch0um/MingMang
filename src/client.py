@@ -1,5 +1,5 @@
 #GORON Nathan 21503237
-import socket
+"""import socket
 
 
 def affiche():
@@ -27,4 +27,4 @@ def demande():
 
 
 
-socket.close()
+socket.close()"""

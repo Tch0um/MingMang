@@ -35,7 +35,9 @@ def toursuivant(mode,tour,taille,nbtour):
     elif tour==2:
         tour=1
     debutjeu(mode,tour,taille,nbtour)
-    
+
+
+init()
     
     
     
